@@ -50,7 +50,7 @@
     self.navigationItem.rightBarButtonItem = tutorialItem;
     
     
-    self.scrollView.contentSize = CGSizeMake(320, 980);
+    self.scrollView.contentSize = CGSizeMake(320, 880);
     
 }
 

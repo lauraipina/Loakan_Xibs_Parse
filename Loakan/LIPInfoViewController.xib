@@ -4,6 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="CaviarDreams.ttf">
+            <string>CaviarDreams</string>
+            <string>CaviarDreams</string>
+            <string>CaviarDreams</string>
+            <string>CaviarDreams</string>
+        </mutableArray>
         <mutableArray key="CaviarDreams_Bold.ttf">
             <string>CaviarDreams-Bold</string>
             <string>CaviarDreams-Bold</string>
@@ -25,7 +31,7 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="49y-zY-auP">
                     <rect key="frame" x="0.0" y="0.0" width="373" height="661"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Bienvenidos a LOAKAN" selectable="NO" id="vl0-iP-Zaf">
                             <rect key="frame" x="8" y="8" width="304" height="37"/>
@@ -35,105 +41,70 @@
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="ADa-o5-BO5">
-                            <rect key="frame" x="8" y="45" width="304" height="120"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="ADa-o5-BO5">
+                            <rect key="frame" x="8" y="45" width="304" height="128"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <attributedString key="attributedText">
-                                <fragment>
-                                    <string key="content">El objetivo de Loakan es proporcionar una guía de mercadillos de ropa de 2ª mano o artesaneles y pop-up stores a nivel mundial de una forma sencilla y rápida. 
+                            <string key="text">El objetivo de Loakan es proporcionar una guía de mercadillos de ropa de 2ª mano o artesaneles y pop-up stores a nivel mundial de una forma sencilla y rápida. 
 Solo tienes que seleccionar una ciudad y se mostrarán los mercadillos más conocidos en ella. </string>
-                                    <attributes>
-                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="14" name="CaviarDreams"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" maximumLineHeight="14"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aviso Legal" selectable="NO" id="Hgo-D2-2S1">
-                            <rect key="frame" x="8" y="172" width="304" height="37"/>
+                            <rect key="frame" x="8" y="181" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="ZYQ-5g-KcN">
-                            <rect key="frame" x="8" y="208" width="304" height="143"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="ZYQ-5g-KcN">
+                            <rect key="frame" x="8" y="217" width="304" height="169"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <attributedString key="attributedText">
-                                <fragment>
-                                    <string key="content">La información recogida en esta aplicación se ha obtenido de fuentes fiables, pero LOAKAN no garantiza que sea exacta, completa o actualizada. Para ello, es mejor consultar las webs oficiales de los mercadillos. 
+                            <string key="text">La información recogida en esta aplicación se ha obtenido de fuentes fiables, pero LOAKAN no garantiza que sea exacta, completa o actualizada. Para ello, es mejor consultar las webs oficiales de los mercadillos. 
 LOAKAN declina expresamente cualquier responsabilidad por error u omisión en la información contenida.
 </string>
-                                    <attributes>
-                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="14" name="CaviarDreams"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" maximumLineHeight="14"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Imágenes &amp; Iconos" selectable="NO" id="LNj-Ny-ihO">
-                            <rect key="frame" x="8" y="358" width="304" height="37"/>
+                            <rect key="frame" x="8" y="394" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="LTA-QJ-H3U">
-                            <rect key="frame" x="8" y="395" width="304" height="85"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="LTA-QJ-H3U">
+                            <rect key="frame" x="8" y="431" width="304" height="85"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <attributedString key="attributedText">
-                                <fragment>
-                                    <string key="content">Las imágenes usadas son de libre derecho o nos las han proporcionado los mercadillos. 
-</string>
-                                    <attributes>
-                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="14" name="CaviarDreams"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="El logo y los iconos utilizados han sido diseñados por Laura Iglesias.">
-                                    <attributes>
-                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="14" name="CaviarDreams"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" maximumLineHeight="16"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                            <string key="text">Las imágenes usadas son de libre derecho o nos las han proporcionado los mercadillos. 
+El logo y los iconos utilizados han sido diseñados por Laura Iglesias.</string>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Contacto" selectable="NO" id="n3i-Dt-vvu">
-                            <rect key="frame" x="8" y="488" width="304" height="37"/>
+                            <rect key="frame" x="8" y="524" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="JbI-gx-5Cy">
-                            <rect key="frame" x="8" y="525" width="304" height="90"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="JbI-gx-5Cy">
+                            <rect key="frame" x="8" y="561" width="304" height="90"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <attributedString key="attributedText">
-                                <fragment>
-                                    <string key="content">Por favor, para cualquier información adicional, sugerencia o propuesta póngase en contacto con:
+                            <string key="text">Por favor, para cualquier información adicional, sugerencia o propuesta póngase en contacto con:
 
             loakan_app@gmail.com</string>
-                                    <attributes>
-                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="14" name="CaviarDreams"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" maximumLineHeight="14" lineHeightMultiple="5"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
