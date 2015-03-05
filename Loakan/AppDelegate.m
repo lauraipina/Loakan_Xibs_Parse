@@ -202,7 +202,7 @@
                                                   longitude:2.174860
                                                     context:self.coreDataStack.context];
     
-    UIImage *fleaImage = [UIImage imageNamed:@"img_flea"];
+    UIImage *fleaImage = [UIImage imageNamed:@"img_flea.x"];
     LIPPhotoContainer *photoFlea = [LIPPhotoContainer photoWithImage:fleaImage
                                                              context:self.coreDataStack.context];
     

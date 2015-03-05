@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *instagramMarket;
 @property (weak, nonatomic) IBOutlet UIButton *iconFavorite;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 - (IBAction)favoriteBtn:(id)sender;
 
 - (IBAction)displayWeb:(id)sender;

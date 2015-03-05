@@ -45,6 +45,9 @@
     backBtn.frame = CGRectMake(0, 0, 18, 20);
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
     self.navigationItem.leftBarButtonItem = backButton;
+    
+    self.scrollView.contentSize = CGSizeMake(320, 520);
+    
 }
 
 

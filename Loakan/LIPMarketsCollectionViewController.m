@@ -290,8 +290,31 @@ static NSString *cellId = @"MarketCellId";
                             NSLog(@"Post cancelado :(");
                             break;
                             
-                        case SLComposeViewControllerResultDone: // El post se envió correctamente.
+                        case SLComposeViewControllerResultDone:
+                            // El post se envió correctamente.
                             NSLog(@"Post enviado :)");
+                        {
+                            
+                            //Lanzar aquí una alerta avisando que el textfield no tiene texto
+                            UIAlertController *alert =   [UIAlertController
+                                                          alertControllerWithTitle:@"Información"
+                                                          message:@"Su post se ha mandado correctamente."
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+                            
+                            UIAlertAction *ok = [UIAlertAction
+                                                 actionWithTitle:@"OK"
+                                                 style:UIAlertActionStyleDefault
+                                                 handler:^(UIAlertAction * action)
+                                                 {
+                                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                                     
+                                                 }];
+                            
+                            [alert addAction:ok];
+                            
+                            [self presentViewController:alert animated:YES completion:nil];
+                        }
+
                             break;
                     }
                 };
@@ -329,12 +352,36 @@ static NSString *cellId = @"MarketCellId";
                 twitter.completionHandler = ^(SLComposeViewControllerResult result) {
                     
                     switch (result) {
-                        case SLComposeViewControllerResultCancelled: // El tweet fue cancelado.
+                        case SLComposeViewControllerResultCancelled:
+                            // El tweet fue cancelado.
                             NSLog(@"Tweet cancelado :(");
                             break;
                             
-                        case SLComposeViewControllerResultDone: // El tweet se envió correctamente.
+                        case SLComposeViewControllerResultDone:
+                            // El tweet se envió correctamente.
                             NSLog(@"Tweet enviado :)");
+                        {
+                            
+                            //Lanzar aquí una alerta avisando que el textfield no tiene texto
+                            UIAlertController *alert =   [UIAlertController
+                                                          alertControllerWithTitle:@"Información"
+                                                          message:@"Su tweet se ha mandado correctamente."
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+                            
+                            UIAlertAction *ok = [UIAlertAction
+                                                 actionWithTitle:@"OK"
+                                                 style:UIAlertActionStyleDefault
+                                                 handler:^(UIAlertAction * action)
+                                                 {
+                                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                                     
+                                                 }];
+                            
+                            [alert addAction:ok];
+                            
+                            [self presentViewController:alert animated:YES completion:nil];
+                        }
+
                             break;
                     }
                 };
@@ -383,9 +430,53 @@ static NSString *cellId = @"MarketCellId";
             NSLog(@"La operación ha sido cancelada");
             break;
         case MFMailComposeResultSaved:
+        {
+            
+            //Lanzar aquí una alerta avisando que el textfield no tiene texto
+            UIAlertController *alert =   [UIAlertController
+                                          alertControllerWithTitle:@"Información"
+                                          message:@"Su email se ha guardado correctamente."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            
+            [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+
             NSLog(@"El correo ha sido guardado en la carpeta borradores");
             break;
         case MFMailComposeResultSent:
+        {
+            
+            //Lanzar aquí una alerta avisando que el textfield no tiene texto
+            UIAlertController *alert =   [UIAlertController
+                                          alertControllerWithTitle:@"Información"
+                                          message:@"Su email se ha mandado correctamente."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            
+            [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+
             NSLog(@"Correo puesto en la cola de envío satisfactoriamente");
             break;
         case MFMailComposeResultFailed:

@@ -183,12 +183,75 @@
             NSLog(@"La operación ha sido cancelada");
             break;
         case MFMailComposeResultSaved:
+        {
+            //Lanzar aquí una alerta avisando que el textfield no tiene texto
+            UIAlertController *alert =   [UIAlertController
+                                          alertControllerWithTitle:@"Información"
+                                          message:@"Email guardado correctamente."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            
+            [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+
             NSLog(@"El correo ha sido guardado en la carpeta borradores");
             break;
         case MFMailComposeResultSent:
+        {
+                //Lanzar aquí una alerta avisando que el textfield no tiene texto
+                UIAlertController *alert =   [UIAlertController
+                                          alertControllerWithTitle:@"Información"
+                                          message:@"Email mandado correctamente."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+                UIAlertAction *ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            
+                [alert addAction:ok];
+            
+                [self presentViewController:alert animated:YES completion:nil];
+            }
             NSLog(@"Correo puesto en la cola de envío satisfactoriamente");
             break;
         case MFMailComposeResultFailed:
+        {
+            
+            //Lanzar aquí una alerta avisando que el textfield no tiene texto
+            UIAlertController *alert =   [UIAlertController
+                                          alertControllerWithTitle:@"Información"
+                                          message:@"El envio del email ha fallado."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            
+            [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+
             NSLog(@"No se ha podido enviar o guardar el correo debido a un error");
             break;
         default:
