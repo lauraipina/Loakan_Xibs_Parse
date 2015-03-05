@@ -71,24 +71,32 @@
     
     //Variables utiles
     NSUInteger nimages = 0;
-    //cx lo tenemos que poner a 30 para que empiece la imagen centrada (no entiendo el porque)
-    //CGFloat cx = 30; //desplazamiento horizontal que van a tener las imagenes
+    
+    //Desplazamiento horizontal que van a tener las imagenes en el iphone 6
     CGFloat cx = 0;
-    //FOR raro para aumentar una variable
+    
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    if(result.height == 480 || result.height == 568)
+    {
+        // iPhone 4 o 5
+        cx = 0;
+    }
+    else if(result.height == 667 || result.height == 736)
+    {
+        // iPhone 6 o 6 plus
+        cx = 30;
+    }
+    
+    
+    //FOR para aumentar una variable
     for( ; ; nimages++){
         
         //Hay que cortarlo, pq sino sería infinito
         //Le ponemos una condicion: si se han acabado las imagenes, que corte..
         //Le sumamos un 1 pq las imagenes empiezan en 0
         NSString *imageName = nil;
-        //NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
         imageName = [NSString stringWithFormat:@"Tutorial_%lu",(nimages +1)];
-        /*if([language isEqualToString:@"es"]) {
-            imageName = [NSString stringWithFormat:@"image%d.jpg",(nimages +1)];
-        } else {
-            imageName = [NSString stringWithFormat:@"image_en%d.jpg",(nimages +1)];
-        }*/
-        
+       
         //Fabricamos una imagen con el objeto UIImage
         UIImage *image = [UIImage imageNamed:imageName];
         
@@ -97,8 +105,6 @@
             
             break;
         }
-        
-        //Esto lo hacemos para ver otra forma de resolverlo, pero metiendo las imagenes en un Array, sería correcto!!
         
         //Necesitamos un UIImageView
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -120,10 +126,14 @@
         rect.origin.x = (self.tutorialScrollView.frame.size.width - [[self view] bounds].size.width) + cx;
         rect.origin.y = (self.tutorialScrollView.frame.size.height - [[self view] bounds].size.height);
         
-        // Bajar el origen de altura en iPhone 5
-        //if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        //    rect.origin.y = rect.origin.y + 70;
-        //}
+        // Subir el origen de altura en iPhone 4
+        if ([[UIScreen mainScreen] bounds].size.height == 480) {
+            rect.origin.y = rect.origin.y - 40;
+        }
+        if ([[UIScreen mainScreen] bounds].size.height == 667 ||
+            [[UIScreen mainScreen] bounds].size.height == 736) {
+            rect.origin.y = rect.origin.y + 40;
+        }
         
         
         //Le volvemos a asignar el rect "configurado" al frame del ImageView

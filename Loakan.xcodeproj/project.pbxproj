@@ -106,8 +106,6 @@
 		005CBDFD1AA77BF20038DE61 /* Tutorial_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB31AA77BF20038DE61 /* Tutorial_1@2x.png */; };
 		005CBDFE1AA77BF20038DE61 /* Tutorial_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB41AA77BF20038DE61 /* Tutorial_2.png */; };
 		005CBDFF1AA77BF20038DE61 /* Tutorial_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB51AA77BF20038DE61 /* Tutorial_2@2x.png */; };
-		005CBE001AA77BF20038DE61 /* Tutorial_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB61AA77BF20038DE61 /* Tutorial_3.png */; };
-		005CBE011AA77BF20038DE61 /* Tutorial_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB71AA77BF20038DE61 /* Tutorial_3@2x.png */; };
 		005CBE021AA77BF20038DE61 /* Tutorial_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB81AA77BF20038DE61 /* Tutorial_4.png */; };
 		005CBE031AA77BF20038DE61 /* Tutorial_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDB91AA77BF20038DE61 /* Tutorial_4@2x.png */; };
 		005CBE041AA77BF20038DE61 /* twitter-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBDBA1AA77BF20038DE61 /* twitter-white.png */; };
@@ -125,6 +123,8 @@
 		005CBE211AA786DC0038DE61 /* ImgNotAvailable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBE1D1AA786DC0038DE61 /* ImgNotAvailable@2x.png */; };
 		005CBE251AA78BBE0038DE61 /* img_flea.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBE231AA78BBE0038DE61 /* img_flea.png */; };
 		005CBE261AA78BBE0038DE61 /* img_vaqueria.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBE241AA78BBE0038DE61 /* img_vaqueria.png */; };
+		00B54F7E1AA878B60027C51D /* Tutorial_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F7C1AA878B60027C51D /* Tutorial_3.png */; };
+		00B54F7F1AA878B60027C51D /* Tutorial_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,8 +265,6 @@
 		005CBDB31AA77BF20038DE61 /* Tutorial_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_1@2x.png"; sourceTree = "<group>"; };
 		005CBDB41AA77BF20038DE61 /* Tutorial_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_2.png; sourceTree = "<group>"; };
 		005CBDB51AA77BF20038DE61 /* Tutorial_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_2@2x.png"; sourceTree = "<group>"; };
-		005CBDB61AA77BF20038DE61 /* Tutorial_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_3.png; sourceTree = "<group>"; };
-		005CBDB71AA77BF20038DE61 /* Tutorial_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_3@2x.png"; sourceTree = "<group>"; };
 		005CBDB81AA77BF20038DE61 /* Tutorial_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_4.png; sourceTree = "<group>"; };
 		005CBDB91AA77BF20038DE61 /* Tutorial_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_4@2x.png"; sourceTree = "<group>"; };
 		005CBDBA1AA77BF20038DE61 /* twitter-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-white.png"; sourceTree = "<group>"; };
@@ -285,6 +283,8 @@
 		005CBE1D1AA786DC0038DE61 /* ImgNotAvailable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ImgNotAvailable@2x.png"; sourceTree = "<group>"; };
 		005CBE231AA78BBE0038DE61 /* img_flea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_flea.png; sourceTree = "<group>"; };
 		005CBE241AA78BBE0038DE61 /* img_vaqueria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_vaqueria.png; sourceTree = "<group>"; };
+		00B54F7C1AA878B60027C51D /* Tutorial_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_3.png; sourceTree = "<group>"; };
+		00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_3@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +330,7 @@
 				005CBCE91AA770420038DE61 /* AppDelegate.h */,
 				005CBCEA1AA770420038DE61 /* AppDelegate.m */,
 				005CBE191AA780E50038DE61 /* Protocolo */,
-				005CBD2B1AA776460038DE61 /* Controllers */,
+				005CBD2B1AA776460038DE61 /* Controllers-Xibs */,
 				005CBD751AA77B540038DE61 /* SocialMedia */,
 				005CBE0A1AA77C470038DE61 /* Resources */,
 				005CBD081AA770AE0038DE61 /* Model */,
@@ -402,7 +402,7 @@
 			name = Machine;
 			sourceTree = "<group>";
 		};
-		005CBD2B1AA776460038DE61 /* Controllers */ = {
+		005CBD2B1AA776460038DE61 /* Controllers-Xibs */ = {
 			isa = PBXGroup;
 			children = (
 				005CBD271AA7763E0038DE61 /* LIPCoreDataTableViewController.h */,
@@ -435,7 +435,7 @@
 				005CBD6F1AA779200038DE61 /* LIPTutorialViewController.xib */,
 				005CBD4E1AA777560038DE61 /* Special Cells */,
 			);
-			name = Controllers;
+			name = "Controllers-Xibs";
 			sourceTree = "<group>";
 		};
 		005CBD4E1AA777560038DE61 /* Special Cells */ = {
@@ -505,8 +505,8 @@
 				005CBDB31AA77BF20038DE61 /* Tutorial_1@2x.png */,
 				005CBDB41AA77BF20038DE61 /* Tutorial_2.png */,
 				005CBDB51AA77BF20038DE61 /* Tutorial_2@2x.png */,
-				005CBDB61AA77BF20038DE61 /* Tutorial_3.png */,
-				005CBDB71AA77BF20038DE61 /* Tutorial_3@2x.png */,
+				00B54F7C1AA878B60027C51D /* Tutorial_3.png */,
+				00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */,
 				005CBDB81AA77BF20038DE61 /* Tutorial_4.png */,
 				005CBDB91AA77BF20038DE61 /* Tutorial_4@2x.png */,
 			);
@@ -719,7 +719,6 @@
 				005CBDF01AA77BF20038DE61 /* LogoTwitterActive.png in Resources */,
 				005CBDFF1AA77BF20038DE61 /* Tutorial_2@2x.png in Resources */,
 				005CBE151AA77E310038DE61 /* SplashScreen.png in Resources */,
-				005CBE011AA77BF20038DE61 /* Tutorial_3@2x.png in Resources */,
 				005CBDDA1AA77BF20038DE61 /* IconInfoActive.png in Resources */,
 				005CBDC41AA77BF20038DE61 /* BackActive.png in Resources */,
 				005CBDF71AA77BF20038DE61 /* SkipActive@2x.png in Resources */,
@@ -739,6 +738,7 @@
 				005CBDEB1AA77BF20038DE61 /* LogoInstagram@2x.png in Resources */,
 				005CBDDC1AA77BF20038DE61 /* IconInfoDesactive.png in Resources */,
 				005CBDC61AA77BF20038DE61 /* BackDesactive.png in Resources */,
+				00B54F7E1AA878B60027C51D /* Tutorial_3.png in Resources */,
 				005CBE071AA77BF20038DE61 /* Web@2x.png in Resources */,
 				005CBDE61AA77BF20038DE61 /* LogoFacebook.png in Resources */,
 				005CBD621AA778FC0038DE61 /* LIPLocationViewController.xib in Resources */,
@@ -760,8 +760,8 @@
 				005CBDE71AA77BF20038DE61 /* LogoFacebook@2x.png in Resources */,
 				005CBDC71AA77BF20038DE61 /* BackDesactive@2x.png in Resources */,
 				005CBDFA1AA77BF20038DE61 /* Sobre.png in Resources */,
-				005CBE001AA77BF20038DE61 /* Tutorial_3.png in Resources */,
 				005CBE1E1AA786DC0038DE61 /* ImgNoDisponible.png in Resources */,
+				00B54F7F1AA878B60027C51D /* Tutorial_3@2x.png in Resources */,
 				005CBDF31AA77BF20038DE61 /* MarcadorActive@2x.png in Resources */,
 				005CBDC51AA77BF20038DE61 /* BackActive@2x.png in Resources */,
 				005CBDD91AA77BF20038DE61 /* IconFavoriteDesactive@2x.png in Resources */,
@@ -1014,6 +1014,7 @@
 				005CBD011AA770420038DE61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		005CBD021AA770420038DE61 /* Build configuration list for PBXNativeTarget "LoakanTests" */ = {
 			isa = XCConfigurationList;
@@ -1022,6 +1023,7 @@
 				005CBD041AA770420038DE61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
