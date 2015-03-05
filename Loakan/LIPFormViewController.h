@@ -10,6 +10,8 @@
 
 @interface LIPFormViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UITextField *nameMarketTextView;
 
 @property (weak, nonatomic) IBOutlet UITextField *cityMarketTextView;
