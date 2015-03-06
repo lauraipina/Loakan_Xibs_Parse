@@ -181,7 +181,7 @@
                                                          blue:250.0/255.0
                                                         alpha:1];
         lblComingSoon.textColor = [UIColor grayColor];
-        [lblComingSoon setFrame:CGRectMake(40,60,40,60)];
+        [lblComingSoon setFrame:CGRectMake(40,60,40,40)];
         lblComingSoon.layer.cornerRadius = 10;
         lblComingSoon.layer.borderWidth = 3.0;
         lblComingSoon.layer.borderColor = [UIColor colorWithRed:133.0/255.0
@@ -195,7 +195,18 @@
         [lblComingSoon setHidden:TRUE];
         [lblComingSoon setAlpha:1.0];
         
-        location.x = 110;
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480 || result.height == 568)
+        {
+            // iPhone 4 o 5
+            location.x = 110;
+        }
+        else if(result.height == 667 || result.height == 736)
+        {
+            // iPhone 6 o 6 plus
+            location.x = 150;
+        }
+        //location.x = 110;
         location.y = 200;
         lblComingSoon.center = location;
         

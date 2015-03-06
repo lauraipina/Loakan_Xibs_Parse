@@ -293,28 +293,6 @@ static NSString *cellId = @"MarketCellId";
                         case SLComposeViewControllerResultDone:
                             // El post se envió correctamente.
                             NSLog(@"Post enviado :)");
-                        {
-                            
-                            //Lanzar aquí una alerta avisando que el textfield no tiene texto
-                            UIAlertController *alert =   [UIAlertController
-                                                          alertControllerWithTitle:@"Información"
-                                                          message:@"Su post se ha mandado correctamente."
-                                                          preferredStyle:UIAlertControllerStyleAlert];
-                            
-                            UIAlertAction *ok = [UIAlertAction
-                                                 actionWithTitle:@"OK"
-                                                 style:UIAlertActionStyleDefault
-                                                 handler:^(UIAlertAction * action)
-                                                 {
-                                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                                     
-                                                 }];
-                            
-                            [alert addAction:ok];
-                            
-                            [self presentViewController:alert animated:YES completion:nil];
-                        }
-
                             break;
                     }
                 };
@@ -323,8 +301,10 @@ static NSString *cellId = @"MarketCellId";
                 [self presentViewController:facebook
                                    animated:YES
                                  completion:NULL];
+            }else{
+                //Hay problemas de conexion, muestro mensaje temporal
+                [self mensajeError];
             }
-            
             break;
             
         case 1:
@@ -352,36 +332,12 @@ static NSString *cellId = @"MarketCellId";
                 twitter.completionHandler = ^(SLComposeViewControllerResult result) {
                     
                     switch (result) {
-                        case SLComposeViewControllerResultCancelled:
-                            // El tweet fue cancelado.
+                        case SLComposeViewControllerResultCancelled:// El tweet fue cancelado.
                             NSLog(@"Tweet cancelado :(");
                             break;
                             
-                        case SLComposeViewControllerResultDone:
-                            // El tweet se envió correctamente.
+                        case SLComposeViewControllerResultDone:// El tweet se envió correctamente.
                             NSLog(@"Tweet enviado :)");
-                        {
-                            
-                            //Lanzar aquí una alerta avisando que el textfield no tiene texto
-                            UIAlertController *alert =   [UIAlertController
-                                                          alertControllerWithTitle:@"Información"
-                                                          message:@"Su tweet se ha mandado correctamente."
-                                                          preferredStyle:UIAlertControllerStyleAlert];
-                            
-                            UIAlertAction *ok = [UIAlertAction
-                                                 actionWithTitle:@"OK"
-                                                 style:UIAlertActionStyleDefault
-                                                 handler:^(UIAlertAction * action)
-                                                 {
-                                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                                     
-                                                 }];
-                            
-                            [alert addAction:ok];
-                            
-                            [self presentViewController:alert animated:YES completion:nil];
-                        }
-
                             break;
                     }
                 };
@@ -390,9 +346,10 @@ static NSString *cellId = @"MarketCellId";
                 [self presentViewController:twitter
                                    animated:YES
                                  completion:NULL];
-            }
-            
-            break;
+            }else{
+                //Hay problemas de conexion, muestro mensaje temporal
+                [self mensajeError];
+            }            break;
             
         case 2:
             //EMAIL
@@ -430,53 +387,9 @@ static NSString *cellId = @"MarketCellId";
             NSLog(@"La operación ha sido cancelada");
             break;
         case MFMailComposeResultSaved:
-        {
-            
-            //Lanzar aquí una alerta avisando que el textfield no tiene texto
-            UIAlertController *alert =   [UIAlertController
-                                          alertControllerWithTitle:@"Información"
-                                          message:@"Su email se ha guardado correctamente."
-                                          preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *ok = [UIAlertAction
-                                 actionWithTitle:@"OK"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                     
-                                 }];
-            
-            [alert addAction:ok];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-
             NSLog(@"El correo ha sido guardado en la carpeta borradores");
             break;
         case MFMailComposeResultSent:
-        {
-            
-            //Lanzar aquí una alerta avisando que el textfield no tiene texto
-            UIAlertController *alert =   [UIAlertController
-                                          alertControllerWithTitle:@"Información"
-                                          message:@"Su email se ha mandado correctamente."
-                                          preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *ok = [UIAlertAction
-                                 actionWithTitle:@"OK"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                     
-                                 }];
-            
-            [alert addAction:ok];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-
             NSLog(@"Correo puesto en la cola de envío satisfactoriamente");
             break;
         case MFMailComposeResultFailed:
@@ -488,6 +401,67 @@ static NSString *cellId = @"MarketCellId";
     
     // cerramos la ventana modal de envío de correo
     [self dismissViewControllerAnimated:YES completion: nil];
+}
+
+-(void)mensajeError{
+    //Si no hay conexion con redes sociales, muestro un mensaje temporal
+    CGPoint location;
+    UILabel *lblComingSoon = [[UILabel alloc] init];
+    
+    lblComingSoon.text = @"  Problemas de conexión...";
+    lblComingSoon.backgroundColor = [UIColor colorWithRed:250.0/255.0
+                                                    green:250.0/255.0
+                                                     blue:250.0/255.0
+                                                    alpha:1];
+    lblComingSoon.textColor = [UIColor grayColor];
+    [lblComingSoon setFrame:CGRectMake(0,50,0,40)];
+    lblComingSoon.layer.cornerRadius = 10;
+    lblComingSoon.layer.borderWidth = 3.0;
+    lblComingSoon.layer.borderColor = [UIColor colorWithRed:133.0/255.0
+                                                      green:197.0/255.0
+                                                       blue:187.0/255.0
+                                                      alpha:1].CGColor;
+    lblComingSoon.clipsToBounds = YES;
+    
+    lblComingSoon.userInteractionEnabled=YES;
+    
+    [lblComingSoon setHidden:TRUE];
+    [lblComingSoon setAlpha:1.0];
+    
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    if(result.height == 480 || result.height == 568)
+    {
+        // iPhone 4 o 5
+        location.x = 60;
+    }
+    else if(result.height == 667 || result.height == 736)
+    {
+        // iPhone 6 o 6 plus
+        location.x = 100;
+    }
+    //location.x = 100;
+    location.y = 340;
+    lblComingSoon.center = location;
+    
+    // Ocultamos la etiqueta con una animacion
+    [lblComingSoon setHidden:FALSE];
+    
+    [UIView animateWithDuration:4.0 animations:^{
+        lblComingSoon.alpha = 0.0;
+    }];
+    
+    CGSize fontSize = [lblComingSoon.text sizeWithAttributes:
+                       @{NSFontAttributeName:
+                             [UIFont fontWithName:@"Caviar Dreams" size:14]}];
+    
+    // Adjustar a la etiqueta la nueva altura
+    CGRect newFrame = lblComingSoon.frame;
+    newFrame.size.width = fontSize.width+50;
+    lblComingSoon.frame = newFrame;
+    
+    // Añadimos la etiqueta a la vista
+    [self.view addSubview:lblComingSoon];
+
 }
 
 @end

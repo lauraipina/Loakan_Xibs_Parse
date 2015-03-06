@@ -21,7 +21,7 @@
                 <outlet property="facebookMarket" destination="OFh-3c-Gf8" id="I2G-R6-iVi"/>
                 <outlet property="iconFavorite" destination="p55-Ud-zw0" id="wzA-3M-gTw"/>
                 <outlet property="imgMarket" destination="zKk-kn-Svp" id="iPr-ME-ZQb"/>
-                <outlet property="infoMarket" destination="sqp-dC-0lQ" id="UMO-1J-APk"/>
+                <outlet property="infoMarket" destination="9Ks-Qg-rjM" id="d6V-AS-lzr"/>
                 <outlet property="instagramMarket" destination="EkH-cU-78m" id="gb0-9x-j1b"/>
                 <outlet property="scrollView" destination="hRp-Zm-gRr" id="9fe-Z4-W3H"/>
                 <outlet property="timetableMarket" destination="2mi-RT-VsY" id="FdO-aT-eUp"/>
@@ -43,15 +43,6 @@
                             <rect key="frame" x="0.0" y="-2" width="320" height="164"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                         </imageView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="sqp-dC-0lQ" userLabel="Info">
-                            <rect key="frame" x="0.0" y="172" width="320" height="103"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                         <view contentMode="scaleToFill" id="DvO-k8-eDp">
                             <rect key="frame" x="0.0" y="371" width="319" height="73"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -67,7 +58,7 @@
                                     <rect key="frame" x="8" y="22" width="297" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -150,7 +141,7 @@
                                     <rect key="frame" x="8" y="23" width="304" height="51"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dirección" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W7b-B4-zh0" userLabel="DirecciónLabel">
@@ -174,11 +165,19 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9Ks-Qg-rjM" userLabel="Info">
+                            <rect key="frame" x="0.0" y="172" width="320" height="103"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                            <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.52156862749999999" green="0.7725490196" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="225" y="314"/>
+            <point key="canvasLocation" x="347" y="302"/>
         </view>
     </objects>
     <resources>
