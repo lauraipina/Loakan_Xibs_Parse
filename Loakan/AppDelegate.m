@@ -185,6 +185,30 @@
     photoVaqueria.markets = vaqueria;
     
     
+    LIPMarket *mcd = [LIPMarket marketWithName:@"MCD"
+                                           info:@"El Mercado Central de Diseño es diseño, compras, talleres, actuaciones en directo, food trucks, más diseño y mucho amor."
+                                      timetable:@"Consultar fechas en la web."
+                                            web:@"http://www.mercadocentraldediseno.es"
+                                        twitter:@"https://twitter.com/mercadocdiseno"
+                                       facebook:@"https://www.facebook.com/MercadoCentralDiseno"
+                                      instagram:@"https://instagram.com/mercadocentraldiseno/"
+                                        context:self.coreDataStack.context];
+    
+    LIPLocation *locMcd = [LIPLocation locationWithAddress:@"Matadero Madrid. Paseo de la Chopera, 14"
+                                                   latitude:40.392673
+                                                  longitude:-3.697303
+                                                    context:self.coreDataStack.context];
+    
+    UIImage *mcdImage = [UIImage imageNamed:@"img_mcd"];
+    LIPPhotoContainer *photoMcd = [LIPPhotoContainer photoWithImage:mcdImage
+                                                             context:self.coreDataStack.context];
+    
+    mcd.city = madrid;
+    locMcd.market = mcd;
+    photoMcd.markets = mcd;
+
+    
+    
     // *** BARCELONA
     LIPCity *barna = [LIPCity cityWithName:@"Barcelona"
                                    context:self.coreDataStack.context];
@@ -202,7 +226,7 @@
                                                   longitude:2.174860
                                                     context:self.coreDataStack.context];
     
-    UIImage *fleaImage = [UIImage imageNamed:@"img_flea.x"];
+    UIImage *fleaImage = [UIImage imageNamed:@"img_flea"];
     LIPPhotoContainer *photoFlea = [LIPPhotoContainer photoWithImage:fleaImage
                                                              context:self.coreDataStack.context];
     
@@ -210,25 +234,69 @@
     locFlea.market = flea;
     photoFlea.markets = flea;
     
-    // *** IBIZA
-    LIPCity *ibiza = [LIPCity cityWithName:@"Ibiza"
-                                   context:self.coreDataStack.context];
     
-    // *** BERLIN
-    //LIPCity *berlin = [LIPCity cityWithName:@"Berlin" context:self.coreDataStack.context];
+    LIPMarket *lost = [LIPMarket marketWithName:@"Lost&Found Market"
+                                           info:@"Lost&Found Market es un mercado de artículos de segunda mano que nace para ofrecer un espacio relacional, interactivo y popular donde desarrollar una forma lúdica y sostenible de comercio."
+                                      timetable:@"Consultar fechas en la web."
+                                            web:@"http://lostfoundmarket.com"
+                                        twitter:@"https://twitter.com/lostfoundmarkt"
+                                       facebook:@"https://www.facebook.com/lostandfoundmarket"
+                                      instagram:nil
+                                        context:self.coreDataStack.context];
+    
+    LIPLocation *locLost = [LIPLocation locationWithAddress:@"Estación de Francia, Barcelona"
+                                                   latitude:41.384238
+                                                  longitude:2.186470
+                                                    context:self.coreDataStack.context];
+    
+    UIImage *lostImage = [UIImage imageNamed:@"img_lost"];
+    LIPPhotoContainer *photoLost = [LIPPhotoContainer photoWithImage:lostImage
+                                                             context:self.coreDataStack.context];
+    
+    lost.city = barna;
+    locLost.market = lost;
+    photoLost.markets = lost;
+    
+    // *** IBIZA
+    //LIPCity *ibiza = [LIPCity cityWithName:@"Ibiza" context:self.coreDataStack.context];
     
     
     // *** LONDRES
     LIPCity *londres = [LIPCity cityWithName:@"Londres"
                                      context:self.coreDataStack.context];
+    LIPMarket *camdem = [LIPMarket marketWithName:@"Camden Markets"
+                                           info:@"El Mercado de Camdem está formado por varios mercados donde se vende artesanía y prendas de vestir. Es una de las principales atracciones turísticas de Londres."
+                                      timetable:@"Todos los días de 10h a 18h. Excepto Navidad"
+                                            web:@"http://www.camdenmarket.com"
+                                        twitter:@"https://twitter.com/camdenmarket"
+                                       facebook:@"https://www.facebook.com/CamdenMarketLDN"
+                                      instagram:@"https://instagram.com/camdenmarketldn/"
+                                        context:self.coreDataStack.context];
+    
+    LIPLocation *locCamdem = [LIPLocation locationWithAddress:@"Camden High Street, London"
+                                                   latitude:51.538434
+                                                  longitude:-0.142021
+                                                    context:self.coreDataStack.context];
+    
+    UIImage *camdemImage = [UIImage imageNamed:@"img_camdem"];
+    LIPPhotoContainer *photoCamdem = [LIPPhotoContainer photoWithImage:camdemImage
+                                                             context:self.coreDataStack.context];
+    
+    camdem.city = londres;
+    locCamdem.market = camdem;
+    photoCamdem.markets = camdem;
+
     
     // *** PARIS
-    LIPCity *paris = [LIPCity cityWithName:@"Paris"
-                                   context:self.coreDataStack.context];
+    //LIPCity *paris = [LIPCity cityWithName:@"Paris" context:self.coreDataStack.context];
     
     // *** NUEVA YORK
     LIPCity *ny = [LIPCity cityWithName:@"Nueva York"
                                 context:self.coreDataStack.context];
+
+    // *** BERLIN
+    LIPCity *berlin = [LIPCity cityWithName:@"Berlin" context:self.coreDataStack.context];
+    
     
     // *** AMSTERDAM
     //LIPCity *amsterdam = [LIPCity cityWithName:@"Amsterdam" context:self.coreDataStack.context];

@@ -260,6 +260,7 @@ static NSString *cellId = @"MarketCellId";
     
     switch (selectedIndex) {
         case 0:
+        {
             //***FACEBOOK
             // Comprobamos que tengamos configurada una cuenta en el sistema
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
@@ -287,6 +288,8 @@ static NSString *cellId = @"MarketCellId";
                     
                     switch (result) {
                         case SLComposeViewControllerResultCancelled: // El post fue cancelado.
+                            //Hay problemas de conexion, muestro mensaje temporal
+                            [self mensajeError];
                             NSLog(@"Post cancelado :(");
                             break;
                             
@@ -296,7 +299,7 @@ static NSString *cellId = @"MarketCellId";
                             break;
                     }
                 };
-                
+           
                 // Presentamos el controlador.
                 [self presentViewController:facebook
                                    animated:YES
@@ -305,6 +308,7 @@ static NSString *cellId = @"MarketCellId";
                 //Hay problemas de conexion, muestro mensaje temporal
                 [self mensajeError];
             }
+        }
             break;
             
         case 1:
@@ -333,6 +337,8 @@ static NSString *cellId = @"MarketCellId";
                     
                     switch (result) {
                         case SLComposeViewControllerResultCancelled:// El tweet fue cancelado.
+                            //Hay problemas de conexion, muestro mensaje temporal
+                            [self mensajeError];
                             NSLog(@"Tweet cancelado :(");
                             break;
                             
@@ -357,7 +363,7 @@ static NSString *cellId = @"MarketCellId";
                 // Email Subject
                 NSString *emailTitle = market.name;
                 // Email Content
-                NSString *messageBody = @"He encontrado este mercadillo en la aplicación LOAKAN y me apetece ir. Vamos juntos?";
+                NSString *messageBody = @"He encontrado este mercadillo en la aplicación LOAKAN y me apetece ir. ¿Vamos juntos?";
                 // To address
                 //NSArray *toRecipents = [NSArray arrayWithObject:@"support@appcoda.com"];
                 

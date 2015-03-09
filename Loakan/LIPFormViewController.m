@@ -27,9 +27,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    //Indicamos que se muestren teclados numericos para determinados datos
-    //[ self.webTextView:UIKeyboardTypeEmailAddress];
-    
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:250.0/255
                                                                           green:250.0/255
                                                                            blue:250.0/255
@@ -58,8 +55,8 @@
 - (IBAction)sendEmail:(id)sender {
     
     //Valido que se hayan rellenado ciertos campos
-    NSString *nameM = [NSString stringWithFormat:@"%@",_nameMarketTextView.text];
-    NSString *cityM = [NSString stringWithFormat:@"%@",_cityMarketTextView.text];
+    NSString *nameM = [NSString stringWithFormat:@"%@",self.nameMarketTextView.text];
+    NSString *cityM = [NSString stringWithFormat:@"%@",self.cityMarketTextView.text];
     
     //Valida que ciertos campos esten rellenos
     if ([nameM length] == 0 || [cityM length] == 0)
@@ -89,8 +86,6 @@
     else
     {
         //Manda email
-        NSLog(@"btn enviar - Lanzamos email");
-        
         // verificamos si es posible enviar correo desde este dispositivo
         if ([MFMailComposeViewController canSendMail])
         {
@@ -105,7 +100,7 @@
                 
                 [emailcontroller setSubject:@"Nuevo Mercadillo"];
                 
-                NSString *body = [NSString stringWithFormat:@"Me gustaría que añadierais un nuevo mercadillo, cuyo nombre es <b>%@</b>, se realiza en <b>%@</b> y su web o red social es <b>%@</b>. Muchas gracias! ", _nameMarketTextView.text, _cityMarketTextView, _webTextView];
+                NSString *body = [NSString stringWithFormat:@"Me gustaría que añadierais un nuevo mercadillo, cuyo nombre es <b>%@</b>, se realiza en <b>%@</b> y su web o red social es <b>%@</b>.\n Muchas gracias! ", self.nameMarketTextView.text, self.cityMarketTextView.text, self.webTextView.text];
                 
                 [emailcontroller setMessageBody:body isHTML:YES];
                 
@@ -114,8 +109,6 @@
                 emailcontroller.mailComposeDelegate = self;
                 
                 [self presentViewController:emailcontroller animated:YES completion:nil];
-                
-                NSLog(@"btn enviar - email lanzado");
                 
             }
             else

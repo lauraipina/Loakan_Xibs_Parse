@@ -166,7 +166,6 @@
        [city.name isEqualToString:@"Berlin"] ||
        [city.name isEqualToString:@"Amsterdam"] ||
        [city.name isEqualToString:@"Paris"] ||
-       [city.name isEqualToString:@"Londres"] ||
        [city.name isEqualToString:@"Nueva York"] ||
        [city.name isEqualToString:@"Buenos Aires"])
     {
