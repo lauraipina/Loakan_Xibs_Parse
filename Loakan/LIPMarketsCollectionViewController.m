@@ -288,8 +288,6 @@ static NSString *cellId = @"MarketCellId";
                     
                     switch (result) {
                         case SLComposeViewControllerResultCancelled: // El post fue cancelado.
-                            //Hay problemas de conexion, muestro mensaje temporal
-                            [self mensajeError];
                             NSLog(@"Post cancelado :(");
                             break;
                             
@@ -337,8 +335,6 @@ static NSString *cellId = @"MarketCellId";
                     
                     switch (result) {
                         case SLComposeViewControllerResultCancelled:// El tweet fue cancelado.
-                            //Hay problemas de conexion, muestro mensaje temporal
-                            [self mensajeError];
                             NSLog(@"Tweet cancelado :(");
                             break;
                             
