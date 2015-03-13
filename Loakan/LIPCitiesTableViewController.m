@@ -247,10 +247,30 @@
         // Creo el layout del CollectionViewController
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.minimumLineSpacing = 10;
         layout.minimumInteritemSpacing = 10;
         layout.itemSize = CGSizeMake(145, 150);
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480 || result.height == 568)
+        {
+            // iPhone 4 o 5
+            layout.minimumLineSpacing = 10;
+            layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        }
+        else if(result.height == 667)
+        {
+            // iPhone 6 o 6 plus
+            layout.minimumLineSpacing = 30;
+            layout.sectionInset = UIEdgeInsetsMake(30, 30, 30, 30);
+        }
+        else if(result.height == 736)
+        {
+            // iPhone 6 o 6 plus
+            layout.minimumLineSpacing = 40;
+            layout.sectionInset = UIEdgeInsetsMake(40, 40, 40, 40);
+        }
+
+        
         
         // Creo una instancia de CollectionViewController
         LIPMarketsCollectionViewController *markets = [LIPMarketsCollectionViewController coreDataCollectionViewControllerWithFetchedResultsController:fc
