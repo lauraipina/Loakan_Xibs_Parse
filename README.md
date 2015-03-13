@@ -1,2 +1,3 @@
-# Loakan_CoreData
-## Proyecto final curso iOS en AGBO
+## Loakan_CoreData
+ 
+Proyecto final - Curso iOS en AGBO
