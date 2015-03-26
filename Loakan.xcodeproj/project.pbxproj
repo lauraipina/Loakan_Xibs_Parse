@@ -7,23 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0058637E1ABF0A9800DA63C4 /* LIPFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */; };
 		005CBCE81AA770420038DE61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCE71AA770420038DE61 /* main.m */; };
 		005CBCEB1AA770420038DE61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCEA1AA770420038DE61 /* AppDelegate.m */; };
 		005CBCED1AA770420038DE61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005CBCEC1AA770420038DE61 /* Images.xcassets */; };
 		005CBCF01AA770420038DE61 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005CBCEE1AA770420038DE61 /* LaunchScreen.xib */; };
 		005CBCFC1AA770420038DE61 /* LoakanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCFB1AA770420038DE61 /* LoakanTests.m */; };
-		005CBD071AA770A50038DE61 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD051AA770A50038DE61 /* Model.xcdatamodeld */; };
-		005CBD151AA774C50038DE61 /* _LIPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD0A1AA774C50038DE61 /* _LIPCity.m */; };
-		005CBD161AA774C50038DE61 /* _LIPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD0C1AA774C50038DE61 /* _LIPLocation.m */; };
-		005CBD171AA774C50038DE61 /* _LIPMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD0E1AA774C50038DE61 /* _LIPMarket.m */; };
-		005CBD181AA774C50038DE61 /* LIPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD101AA774C50038DE61 /* LIPCity.m */; };
-		005CBD191AA774C50038DE61 /* LIPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD121AA774C50038DE61 /* LIPLocation.m */; };
-		005CBD1A1AA774C50038DE61 /* LIPMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD141AA774C50038DE61 /* LIPMarket.m */; };
-		005CBD1F1AA7750E0038DE61 /* _LIPPhotoContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD1C1AA7750E0038DE61 /* _LIPPhotoContainer.m */; };
-		005CBD201AA7750E0038DE61 /* LIPPhotoContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD1E1AA7750E0038DE61 /* LIPPhotoContainer.m */; };
-		005CBD241AA7759C0038DE61 /* LIPCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD231AA7759C0038DE61 /* LIPCoreDataStack.m */; };
-		005CBD291AA7763E0038DE61 /* LIPCoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD261AA7763E0038DE61 /* LIPCoreDataCollectionViewController.m */; };
-		005CBD2A1AA7763E0038DE61 /* LIPCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD281AA7763E0038DE61 /* LIPCoreDataTableViewController.m */; };
 		005CBD2E1AA776910038DE61 /* LIPCitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD2D1AA776910038DE61 /* LIPCitiesTableViewController.m */; };
 		005CBD311AA776A10038DE61 /* LIPMarketsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD301AA776A10038DE61 /* LIPMarketsCollectionViewController.m */; };
 		005CBD431AA776E30038DE61 /* LIPCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBD421AA776E30038DE61 /* LIPCustomAnnotation.m */; };
@@ -118,6 +107,7 @@
 		006055661AA9E73E00F069E3 /* img_mcd.png in Resources */ = {isa = PBXBuildFile; fileRef = 006055641AA9E73E00F069E3 /* img_mcd.png */; };
 		0060556B1AA9EDA800F069E3 /* img_camdem.png in Resources */ = {isa = PBXBuildFile; fileRef = 006055691AA9EDA800F069E3 /* img_camdem.png */; };
 		0060556E1AA9F0AC00F069E3 /* img_lost.png in Resources */ = {isa = PBXBuildFile; fileRef = 0060556D1AA9F0AC00F069E3 /* img_lost.png */; };
+		0078ED5F1ABA014900BD5A39 /* LIPMarketParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0078ED5E1ABA014900BD5A39 /* LIPMarketParse.m */; };
 		00B54F7E1AA878B60027C51D /* Tutorial_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F7C1AA878B60027C51D /* Tutorial_3.png */; };
 		00B54F7F1AA878B60027C51D /* Tutorial_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */; };
 		00B54F8C1AA89E1C0027C51D /* ImgNoDisponible.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F881AA89E1C0027C51D /* ImgNoDisponible.png */; };
@@ -129,6 +119,7 @@
 		00B54F961AA8A6730027C51D /* WebActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F921AA8A6730027C51D /* WebActive.png */; };
 		00B54F971AA8A6730027C51D /* WebActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F931AA8A6730027C51D /* WebActive@2x.png */; };
 		00D53F0D1AACB7D20035963E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D53F0C1AACB7D20035963E /* MessageUI.framework */; };
+		7A68643BC9F49F0418450246 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1369A26307F61C68F69088DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0058637C1ABF0A9800DA63C4 /* LIPFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPFavoritesViewController.h; sourceTree = "<group>"; };
+		0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPFavoritesViewController.m; sourceTree = "<group>"; };
 		005CBCE21AA770420038DE61 /* Loakan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loakan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		005CBCE61AA770420038DE61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		005CBCE71AA770420038DE61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -152,29 +145,6 @@
 		005CBCF51AA770420038DE61 /* LoakanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoakanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		005CBCFA1AA770420038DE61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		005CBCFB1AA770420038DE61 /* LoakanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoakanTests.m; sourceTree = "<group>"; };
-		005CBD061AA770A50038DE61 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		005CBD091AA774C50038DE61 /* _LIPCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LIPCity.h; sourceTree = "<group>"; };
-		005CBD0A1AA774C50038DE61 /* _LIPCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LIPCity.m; sourceTree = "<group>"; };
-		005CBD0B1AA774C50038DE61 /* _LIPLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LIPLocation.h; sourceTree = "<group>"; };
-		005CBD0C1AA774C50038DE61 /* _LIPLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LIPLocation.m; sourceTree = "<group>"; };
-		005CBD0D1AA774C50038DE61 /* _LIPMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LIPMarket.h; sourceTree = "<group>"; };
-		005CBD0E1AA774C50038DE61 /* _LIPMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LIPMarket.m; sourceTree = "<group>"; };
-		005CBD0F1AA774C50038DE61 /* LIPCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPCity.h; sourceTree = "<group>"; };
-		005CBD101AA774C50038DE61 /* LIPCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPCity.m; sourceTree = "<group>"; };
-		005CBD111AA774C50038DE61 /* LIPLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPLocation.h; sourceTree = "<group>"; };
-		005CBD121AA774C50038DE61 /* LIPLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPLocation.m; sourceTree = "<group>"; };
-		005CBD131AA774C50038DE61 /* LIPMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPMarket.h; sourceTree = "<group>"; };
-		005CBD141AA774C50038DE61 /* LIPMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPMarket.m; sourceTree = "<group>"; };
-		005CBD1B1AA7750E0038DE61 /* _LIPPhotoContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LIPPhotoContainer.h; sourceTree = "<group>"; };
-		005CBD1C1AA7750E0038DE61 /* _LIPPhotoContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LIPPhotoContainer.m; sourceTree = "<group>"; };
-		005CBD1D1AA7750E0038DE61 /* LIPPhotoContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPPhotoContainer.h; sourceTree = "<group>"; };
-		005CBD1E1AA7750E0038DE61 /* LIPPhotoContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPPhotoContainer.m; sourceTree = "<group>"; };
-		005CBD221AA7759C0038DE61 /* LIPCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPCoreDataStack.h; sourceTree = "<group>"; };
-		005CBD231AA7759C0038DE61 /* LIPCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPCoreDataStack.m; sourceTree = "<group>"; };
-		005CBD251AA7763E0038DE61 /* LIPCoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPCoreDataCollectionViewController.h; sourceTree = "<group>"; };
-		005CBD261AA7763E0038DE61 /* LIPCoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPCoreDataCollectionViewController.m; sourceTree = "<group>"; };
-		005CBD271AA7763E0038DE61 /* LIPCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPCoreDataTableViewController.h; sourceTree = "<group>"; };
-		005CBD281AA7763E0038DE61 /* LIPCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPCoreDataTableViewController.m; sourceTree = "<group>"; };
 		005CBD2C1AA776910038DE61 /* LIPCitiesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPCitiesTableViewController.h; sourceTree = "<group>"; };
 		005CBD2D1AA776910038DE61 /* LIPCitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPCitiesTableViewController.m; sourceTree = "<group>"; };
 		005CBD2F1AA776A10038DE61 /* LIPMarketsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPMarketsCollectionViewController.h; sourceTree = "<group>"; };
@@ -276,12 +246,13 @@
 		005CBE111AA77D7C0038DE61 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		005CBE131AA77E310038DE61 /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
 		005CBE141AA77E310038DE61 /* SplashScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SplashScreen@2x.png"; sourceTree = "<group>"; };
-		005CBE181AA780E20038DE61 /* LIPDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LIPDetailViewController.h; sourceTree = "<group>"; };
 		005CBE231AA78BBE0038DE61 /* img_flea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_flea.png; sourceTree = "<group>"; };
 		005CBE241AA78BBE0038DE61 /* img_vaqueria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_vaqueria.png; sourceTree = "<group>"; };
 		006055641AA9E73E00F069E3 /* img_mcd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_mcd.png; sourceTree = "<group>"; };
 		006055691AA9EDA800F069E3 /* img_camdem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_camdem.png; sourceTree = "<group>"; };
 		0060556D1AA9F0AC00F069E3 /* img_lost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_lost.png; sourceTree = "<group>"; };
+		0078ED5D1ABA014900BD5A39 /* LIPMarketParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPMarketParse.h; sourceTree = "<group>"; };
+		0078ED5E1ABA014900BD5A39 /* LIPMarketParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPMarketParse.m; sourceTree = "<group>"; };
 		00B54F7C1AA878B60027C51D /* Tutorial_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_3.png; sourceTree = "<group>"; };
 		00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_3@2x.png"; sourceTree = "<group>"; };
 		00B54F881AA89E1C0027C51D /* ImgNoDisponible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ImgNoDisponible.png; sourceTree = "<group>"; };
@@ -293,6 +264,9 @@
 		00B54F921AA8A6730027C51D /* WebActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WebActive.png; sourceTree = "<group>"; };
 		00B54F931AA8A6730027C51D /* WebActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WebActive@2x.png"; sourceTree = "<group>"; };
 		00D53F0C1AACB7D20035963E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1369A26307F61C68F69088DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B369609705E8AC5F4104CAB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		ED8B339FAC927370A9D319A7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +276,7 @@
 			files = (
 				00D53F0D1AACB7D20035963E /* MessageUI.framework in Frameworks */,
 				005CBE121AA77D7C0038DE61 /* MapKit.framework in Frameworks */,
+				7A68643BC9F49F0418450246 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +296,8 @@
 				005CBCE41AA770420038DE61 /* Loakan */,
 				005CBCF81AA770420038DE61 /* LoakanTests */,
 				005CBCE31AA770420038DE61 /* Products */,
+				07668DAFE6D2A72A580D0CB6 /* Pods */,
+				63C33CF15661A44D1E1A1537 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -338,7 +315,6 @@
 			children = (
 				005CBCE91AA770420038DE61 /* AppDelegate.h */,
 				005CBCEA1AA770420038DE61 /* AppDelegate.m */,
-				005CBE191AA780E50038DE61 /* Protocolo */,
 				005CBD2B1AA776460038DE61 /* Controllers-Xibs */,
 				005CBD751AA77B540038DE61 /* SocialMedia */,
 				005CBE0A1AA77C470038DE61 /* Resources */,
@@ -380,46 +356,17 @@
 		005CBD081AA770AE0038DE61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				005CBD211AA775580038DE61 /* Machine */,
-				005CBD0F1AA774C50038DE61 /* LIPCity.h */,
-				005CBD101AA774C50038DE61 /* LIPCity.m */,
-				005CBD111AA774C50038DE61 /* LIPLocation.h */,
-				005CBD121AA774C50038DE61 /* LIPLocation.m */,
-				005CBD131AA774C50038DE61 /* LIPMarket.h */,
-				005CBD141AA774C50038DE61 /* LIPMarket.m */,
-				005CBD1D1AA7750E0038DE61 /* LIPPhotoContainer.h */,
-				005CBD1E1AA7750E0038DE61 /* LIPPhotoContainer.m */,
-				005CBD221AA7759C0038DE61 /* LIPCoreDataStack.h */,
-				005CBD231AA7759C0038DE61 /* LIPCoreDataStack.m */,
-				005CBD051AA770A50038DE61 /* Model.xcdatamodeld */,
+				0078ED5D1ABA014900BD5A39 /* LIPMarketParse.h */,
+				0078ED5E1ABA014900BD5A39 /* LIPMarketParse.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		005CBD211AA775580038DE61 /* Machine */ = {
-			isa = PBXGroup;
-			children = (
-				005CBD1B1AA7750E0038DE61 /* _LIPPhotoContainer.h */,
-				005CBD1C1AA7750E0038DE61 /* _LIPPhotoContainer.m */,
-				005CBD091AA774C50038DE61 /* _LIPCity.h */,
-				005CBD0A1AA774C50038DE61 /* _LIPCity.m */,
-				005CBD0B1AA774C50038DE61 /* _LIPLocation.h */,
-				005CBD0C1AA774C50038DE61 /* _LIPLocation.m */,
-				005CBD0D1AA774C50038DE61 /* _LIPMarket.h */,
-				005CBD0E1AA774C50038DE61 /* _LIPMarket.m */,
-			);
-			name = Machine;
 			sourceTree = "<group>";
 		};
 		005CBD2B1AA776460038DE61 /* Controllers-Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				005CBD271AA7763E0038DE61 /* LIPCoreDataTableViewController.h */,
-				005CBD281AA7763E0038DE61 /* LIPCoreDataTableViewController.m */,
 				005CBD2C1AA776910038DE61 /* LIPCitiesTableViewController.h */,
 				005CBD2D1AA776910038DE61 /* LIPCitiesTableViewController.m */,
-				005CBD251AA7763E0038DE61 /* LIPCoreDataCollectionViewController.h */,
-				005CBD261AA7763E0038DE61 /* LIPCoreDataCollectionViewController.m */,
 				005CBD2F1AA776A10038DE61 /* LIPMarketsCollectionViewController.h */,
 				005CBD301AA776A10038DE61 /* LIPMarketsCollectionViewController.m */,
 				005CBD541AA778E60038DE61 /* LIPMarketViewController.h */,
@@ -442,6 +389,8 @@
 				005CBD6D1AA779200038DE61 /* LIPTutorialViewController.h */,
 				005CBD6E1AA779200038DE61 /* LIPTutorialViewController.m */,
 				005CBD6F1AA779200038DE61 /* LIPTutorialViewController.xib */,
+				0058637C1ABF0A9800DA63C4 /* LIPFavoritesViewController.h */,
+				0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */,
 				005CBD4E1AA777560038DE61 /* Special Cells */,
 			);
 			name = "Controllers-Xibs";
@@ -611,14 +560,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		005CBE191AA780E50038DE61 /* Protocolo */ = {
-			isa = PBXGroup;
-			children = (
-				005CBE181AA780E20038DE61 /* LIPDetailViewController.h */,
-			);
-			name = Protocolo;
-			sourceTree = "<group>";
-		};
 		005CBE221AA786E20038DE61 /* Others Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +573,23 @@
 			name = "Others Photos";
 			sourceTree = "<group>";
 		};
+		07668DAFE6D2A72A580D0CB6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1B369609705E8AC5F4104CAB /* Pods.debug.xcconfig */,
+				ED8B339FAC927370A9D319A7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		63C33CF15661A44D1E1A1537 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1369A26307F61C68F69088DA /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -639,9 +597,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 005CBCFF1AA770420038DE61 /* Build configuration list for PBXNativeTarget "Loakan" */;
 			buildPhases = (
+				CC5077BFC0AD5CCFC94009BF /* Check Pods Manifest.lock */,
 				005CBCDE1AA770420038DE61 /* Sources */,
 				005CBCDF1AA770420038DE61 /* Frameworks */,
 				005CBCE01AA770420038DE61 /* Resources */,
+				574C97CC84A8B9863A2405E7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -817,16 +777,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		574C97CC84A8B9863A2405E7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC5077BFC0AD5CCFC94009BF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		005CBCDE1AA770420038DE61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				005CBD181AA774C50038DE61 /* LIPCity.m in Sources */,
-				005CBD161AA774C50038DE61 /* _LIPLocation.m in Sources */,
 				005CBD6B1AA779120038DE61 /* LIPInfoViewController.m in Sources */,
 				005CBD431AA776E30038DE61 /* LIPCustomAnnotation.m in Sources */,
-				005CBD2A1AA7763E0038DE61 /* LIPCoreDataTableViewController.m in Sources */,
 				005CBD5C1AA778E60038DE61 /* LIPWebViewController.m in Sources */,
 				005CBD5A1AA778E60038DE61 /* LIPMarketViewController.m in Sources */,
 				005CBCEB1AA770420038DE61 /* AppDelegate.m in Sources */,
@@ -834,20 +824,13 @@
 				005CBD691AA779120038DE61 /* LIPFormViewController.m in Sources */,
 				005CBD741AA77B500038DE61 /* GHContextMenuView.m in Sources */,
 				005CBCE81AA770420038DE61 /* main.m in Sources */,
-				005CBD1F1AA7750E0038DE61 /* _LIPPhotoContainer.m in Sources */,
 				005CBD311AA776A10038DE61 /* LIPMarketsCollectionViewController.m in Sources */,
+				0058637E1ABF0A9800DA63C4 /* LIPFavoritesViewController.m in Sources */,
 				005CBD4C1AA777460038DE61 /* LIPMarketCollectionViewCell.m in Sources */,
-				005CBD151AA774C50038DE61 /* _LIPCity.m in Sources */,
 				005CBD701AA779200038DE61 /* LIPTutorialViewController.m in Sources */,
-				005CBD1A1AA774C50038DE61 /* LIPMarket.m in Sources */,
-				005CBD291AA7763E0038DE61 /* LIPCoreDataCollectionViewController.m in Sources */,
-				005CBD071AA770A50038DE61 /* Model.xcdatamodeld in Sources */,
 				005CBD4A1AA777460038DE61 /* LIPCitiesTableViewCell.m in Sources */,
-				005CBD201AA7750E0038DE61 /* LIPPhotoContainer.m in Sources */,
-				005CBD191AA774C50038DE61 /* LIPLocation.m in Sources */,
+				0078ED5F1ABA014900BD5A39 /* LIPMarketParse.m in Sources */,
 				005CBD2E1AA776910038DE61 /* LIPCitiesTableViewController.m in Sources */,
-				005CBD171AA774C50038DE61 /* _LIPMarket.m in Sources */,
-				005CBD241AA7759C0038DE61 /* LIPCoreDataStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +942,7 @@
 		};
 		005CBD001AA770420038DE61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B369609705E8AC5F4104CAB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -970,6 +954,7 @@
 		};
 		005CBD011AA770420038DE61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED8B339FAC927370A9D319A7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1044,19 +1029,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		005CBD051AA770A50038DE61 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				005CBD061AA770A50038DE61 /* Model.xcdatamodel */,
-			);
-			currentVersion = 005CBD061AA770A50038DE61 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 005CBCDA1AA770420038DE61 /* Project object */;
 }

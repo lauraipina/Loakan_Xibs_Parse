@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @property (strong, nonatomic) NSURL *type;
+@property (strong, nonatomic) NSString *nameMarket;
 
--(id) initWithUrl: (NSURL *) aTypeWeb;
+-(id) initWithUrl: (NSURL *) aTypeWeb nameMarket:(NSString *) aNameMarket;
 
 @end

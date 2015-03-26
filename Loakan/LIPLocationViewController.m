@@ -7,19 +7,18 @@
 //
 
 #import "LIPLocationViewController.h"
-#import "LIPLocation.h"
 #import "LIPCustomAnnotation.h"
-#import "LIPMarket.h"
+#import "LIPMarketParse.h"
 
 @interface LIPLocationViewController ()<MKMapViewDelegate>
 @end
 
 @implementation LIPLocationViewController
 
--(id)initWithModel:(LIPMarket *)aModel latitude:(double) aLatitude longitude:(double)aLongitude{
+-(id)initWithModel:(LIPMarketParse *)aModel latitude:(double) aLatitude longitude:(double)aLongitude{
     
     if (self = [super initWithNibName:nil bundle:nil]) {
-        _model = aModel;
+        _modelParse = aModel;
         _latitude = aLatitude;
         _longitude = aLongitude;
         self.title = @"Localización";
@@ -62,8 +61,8 @@
     
     [self.mapView setRegion:region animated:YES];
     
-    NSString *name = self.model.name;
-    NSString *address = self.model.address.address;
+    NSString *name = self.modelParse.name;
+    NSString *address = self.modelParse.address;
    
     LIPCustomAnnotation *annotation = [[LIPCustomAnnotation alloc]initWithTitle: name
                                                                  subtitle: address

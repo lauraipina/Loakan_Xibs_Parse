@@ -7,14 +7,11 @@
 //
 
 @import UIKit;
-#import "LIPCoreDataTableViewController.h"
+@import Parse;
 
-@class LIPCity;
+#import "PFQueryTableViewController.h"
 
-
-@interface LIPCitiesTableViewController : LIPCoreDataTableViewController 
-
-@property (strong, nonatomic) LIPCity *city;
+@interface LIPCitiesTableViewController : PFQueryTableViewController
 
 
 @end

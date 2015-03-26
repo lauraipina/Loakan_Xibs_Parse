@@ -5,24 +5,23 @@
 //  Created by Laura Iglesias Piña on 18/2/15.
 //  Copyright (c) 2015 lip. All rights reserved.
 //
-
+#import <Parse/Parse.h>
+#import <Parse/PFQuery.h>
+#import <ParseUI/PFCollectionViewCell.h>
+#import <ParseUI/PFImageView.h>
 #import "LIPMarketsCollectionViewController.h"
-#import "LIPMarketCollectionViewCell.h"
 #import "LIPMarketViewController.h"
-#import "LIPMarket.h"
-#import "LIPLocation.h"
-#import "LIPPhotoContainer.h"
 #import "LIPFormViewController.h"
+#import "LIPMarketParse.h"
 #import "GHContextMenuView.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import <MessageUI/MessageUI.h>
-
-
-static NSString *cellId = @"MarketCellId";
-
+#import "LIPFavoritesViewController.h"
 
 @interface LIPMarketsCollectionViewController () <UIGestureRecognizerDelegate, GHContextOverlayViewDataSource, GHContextOverlayViewDelegate, MFMailComposeViewControllerDelegate>
+
+@property (strong, nonatomic) LIPFavoritesViewController *favoritesVC;
 
 @end
 
@@ -30,15 +29,50 @@ static NSString *cellId = @"MarketCellId";
 
 @implementation LIPMarketsCollectionViewController
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Init
+-(instancetype)initWithClassName:(NSString *)className
+                            city:(NSString *)aCity{
+    
+    if(self == [super initWithClassName:className]){
+        _className = className;
+        _city = aCity;
+    }
+    
+    self.pullToRefreshEnabled = YES;
+    self.paginationEnabled = NO;
+    
+    return self;
+    
 }
 
-#pragma mark -  View Lifecicle
--(void) viewDidLoad{
+
+-(instancetype)initWithClassName:(NSString *)className
+                  arrayFavorites:(NSArray *)myFavoriteMarkets{
+    
+    
+    if(self == [super initWithClassName:className]){
+        _className = className;
+        _favoriteMarkets = myFavoriteMarkets;
+    }
+    
+    self.pullToRefreshEnabled = YES;
+    self.paginationEnabled = NO;
+    
+    return self;
+}
+
+
+#pragma mark - Cycle life
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Creo el layout del CollectionViewController
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.minimumInteritemSpacing = 10.0f;
+    //layout.minimumInteritemSpacing = 5.0f;
+    layout.itemSize = CGSizeMake(145, 150);
     
     // Inicializamos el menu y le asignamos como delegado
     GHContextMenuView* overlay = [[GHContextMenuView alloc] init];
@@ -50,20 +84,44 @@ static NSString *cellId = @"MarketCellId";
     
     [self.collectionView addGestureRecognizer:longPressRecognizer];
     
+    
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    if(result.height == 480 || result.height == 568)
+    {
+        // iPhone 4 o 5
+        layout.minimumLineSpacing = 10;
+        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    }
+    else if(result.height == 667)
+    {
+        // iPhone 6
+        layout.minimumLineSpacing = 30;
+        layout.sectionInset = UIEdgeInsetsMake(30, 30, 30, 30);
+    }
+    else if(result.height == 736)
+    {
+        // iPhone 6 plus
+        layout.minimumLineSpacing = 40;
+        layout.sectionInset = UIEdgeInsetsMake(40, 40, 40, 40);
+    }
+    
+    layout.itemSize = CGSizeMake(145, 150);
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    
-    [self registerCell];
-    
-    self.detailViewControllerClassName = NSStringFromClass([LIPMarketViewController class]);
-    
+
     self.collectionView.backgroundColor = [UIColor colorWithRed:232/255.0
-                    green:232/255.0
-                     blue:232/255.0
-                    alpha:1];
+                                                          green:232/255.0
+                                                           blue:232/255.0
+                                                          alpha:1];
     
     if(self.isDisplayFavorite == YES){
         //Si venimos desde el Botón Favoritos de la tabla de ciudades
@@ -99,87 +157,96 @@ static NSString *cellId = @"MarketCellId";
     self.navigationItem.leftBarButtonItem = backButton;
 }
 
-#pragma mark - cell registration
--(void) registerCell{
+#pragma mark - Parse Data
+
+- (PFQuery *)queryForCollection {
     
-    UINib *nib = [UINib nibWithNibName:@"LIPMarketCollectionViewCell"
-                                bundle:nil];
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:cellId];
+    if(self.isDisplayFavorite == YES){
+        //Si venimos desde el Botón Favoritos de la tabla de ciudades
+        self.title = @"Mis Favoritos";
+        [query whereKey:@"name" containedIn:self.favoriteMarkets];
+        
+    }else{
+        //Si venimos desde una ciudad de la tabla
+        self.title = @"Mercadillos";
+        [query whereKey:@"city" equalTo:self.city];
+    }
+    
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
+    
+    [query orderByAscending:@"name"];
+    
+    return query;
 }
 
-#pragma mark - Data Source
--(UICollectionViewCell*) collectionView:(UICollectionView *)collectionView
-                 cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+#pragma mark - PFCollectionView
+- (PFCollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+                                  object:(PFObject *)object {
+    PFCollectionViewCell *cell = [super collectionView:collectionView cellForItemAtIndexPath:indexPath object:object];
     
-    // Obtener el objeto
-    LIPMarket *market = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:object[@"name"]
+                                                                              attributes:@{
+                                                                                           NSFontAttributeName:[UIFont fontWithName:@"CaviarDreams-Bold" size:14 ],
+                                                                                           NSForegroundColorAttributeName:[UIColor colorWithRed:85.0/255.0 green:85.0/255.0 blue:85.0/255.0 alpha:1]
+                                                                                           }];
     
-    // Obtener la celda
-    LIPMarketCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    // Configurar la celda
-    //[cell observeNote:note];
-    cell.backgroundColor = [UIColor colorWithRed:133.0/255
-                                           green:197.0/255
-                                            blue:187.0/255
-                                           alpha:1];
-    cell.titleLabel.text = market.name;
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.attributedText = title;
     
-    UIImage *img;
-    if (market.photo.image == nil) {
-        img = [UIImage imageNamed:@"ImgNoDisponible"];
-    }else{
-        img = market.photo.image;
+    cell.imageView.file = object[@"photo"];
+    // Si la imagen no se carga, cargar una por defecto
+    if (cell.imageView.image == nil) {
+        cell.imageView.image = [UIImage imageNamed:@"ImgNoDisponible"];
     }
-    cell.imgLabel.image = img;
-   
-    // Devolverla
+    [cell.imageView loadInBackground];
+    
+    cell.contentView.layer.borderWidth = 5.0f;
+    cell.contentView.layer.borderColor = [UIColor colorWithRed:133.0/255
+                                                         green:197.0/255
+                                                          blue:187.0/255
+                                                         alpha:1].CGColor;
+    cell.contentView.layer.backgroundColor = [UIColor colorWithRed:133.0/255
+                                                             green:197.0/255
+                                                              blue:187.0/255
+                                                             alpha:1].CGColor;
     return cell;
 }
-
 #pragma mark <UICollectionViewDelegate>
-
 //Pincho sobre una celda del CollectionView
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     // Obtener el objeto
-    LIPMarket *market = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
+    PFObject *marketSelected = [self.objects objectAtIndex:indexPath.row];
+    
+    // Creamos el objeto MarketParse y lo enviamos al controlador LIPMarketViewController
+    LIPMarketParse *market = [[LIPMarketParse alloc] init];
+    market.name = [marketSelected objectForKey:@"name"];
+    market.info = [marketSelected objectForKey:@"info"];
+    market.imageFile = [marketSelected objectForKey:@"photo"];
+    market.timeTable = [marketSelected objectForKey:@"timetable"];
+    market.address = [marketSelected objectForKey:@"address"];
+    market.location = [marketSelected objectForKey:@"location"];
+    market.webURL = [NSURL URLWithString:[marketSelected objectForKey:@"web"]];
+    market.facebookURL = [NSURL URLWithString:[marketSelected objectForKey:@"facebook"]];
+    market.twitterURL = [NSURL URLWithString:[marketSelected objectForKey:@"twitter"]];
+    market.instagramURL = [NSURL URLWithString:[marketSelected objectForKey:@"instagram"]];
+    market.isFavorite = [marketSelected objectForKey:@"favorite"];
+    
     // Crear el controlador
-    LIPMarketViewController *marketVC = [[LIPMarketViewController alloc] initWithModel:market];
-    
+    LIPMarketViewController *controller = [[LIPMarketViewController alloc] initWithClassName:self.className market:market];
+    if(self.isDisplayFavorite == YES){
+        controller.isDisplayFavorite = YES;
+        controller.favoriteMarkets = self.favoriteMarkets;
+    }
     // Hacer un push
-    [self.navigationController pushViewController:marketVC animated:YES];
-    
-}
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
+    [self.navigationController pushViewController:controller animated:YES];
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
 }
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 #pragma mark - Actions
 -(void)addFleaMarket:(id) sender{
@@ -193,7 +260,6 @@ static NSString *cellId = @"MarketCellId";
 
 - (void) popBack:(id)sender
 {
-    // do your custom handler code here
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -233,52 +299,54 @@ static NSString *cellId = @"MarketCellId";
 
 - (void) didSelectItemAtIndex:(NSInteger)selectedIndex forMenuAtPoint:(CGPoint)point
 {
-    
-    
-
+    // Obtener el objeto
     NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
     
-    // Obtener el objeto
-    LIPMarket *market = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    PFObject *marketSelected = [self.objects objectAtIndex:indexPath.row];
     
+    // Obtenemos el nombre del mercado seleccionado
+    NSString *nameMarket = [marketSelected objectForKey:@"name"];
+    NSString *textSocial;
     // Asignamos un texto para compartir
-    NSString *nameMarket = market.name;
     if (nameMarket != nil) {
-        nameMarket = [NSString stringWithFormat:@"Descubriendo %@ desde la app LOAKAN", [nameMarket capitalizedString]];
+        textSocial = [NSString stringWithFormat:@"Descubriendo %@ desde la app LOAKAN", [nameMarket capitalizedString]];
     } else {
-        nameMarket = @"Descubriendo mercadillos con la app LOAKAN";
+        textSocial = @"Descubriendo mercadillos y pop-up stores con la app LOAKAN";
     }
     
+    // Obtenemos la url
+    NSString *web = [marketSelected objectForKey:@"web"];
+    NSURL *webURL = [NSURL URLWithString:web];
     
     // Obtenemos la imagen
-    UIImage *img;
-    if (market.photo.image == nil) {
-        img = [UIImage imageNamed:@"ImgNoDisponible"];
-    }else{
-        img = market.photo.image;
-    }
+    PFImageView *photo = [[PFImageView alloc] init];
+    photo.image = [UIImage imageNamed:@"ImgNoDisponible"]; // placeholder image
+    photo.file = (PFFile *)[marketSelected objectForKey:@"photo"]; // remote image
+    
+    [photo loadInBackground];
+    
     
     switch (selectedIndex) {
         case 0:
         {
-            //***FACEBOOK
+            // FACEBOOK
             // Comprobamos que tengamos configurada una cuenta en el sistema
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
                 
                 // Obtenemos el view controller para el controlador de twitter.
                 SLComposeViewController *facebook = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-
+                
                 //[facebook setInitialText:@"Probando Post Facebook"];
-                [facebook setInitialText:nameMarket];
+                [facebook setInitialText:textSocial];
                 
                 // En el caso que queramos adjuntar una imagen podemos hacerlo con función addImage.
                 //[facebook addImage:[UIImage imageNamed:@"img_flea"]];
-                [facebook addImage:img];
+                [facebook addImage:photo.image];
                 
                 // Si queremos asignar una url lo hacaemos con esta función. En iOS 7 se generará una vista previa de la página web si no se le asigna una imagen al tweet.
                 //[facebook addURL:[NSURL URLWithString:@"http://google.es"]];
-                if (market.webURL != nil) {
-                    [facebook addURL:market.webURL];
+                if (webURL != nil) {
+                    [facebook addURL:webURL];
                 }else{
                     #warning añadir enlace descarga AppStore cuando esté publicada
                 }
@@ -297,7 +365,7 @@ static NSString *cellId = @"MarketCellId";
                             break;
                     }
                 };
-           
+                
                 // Presentamos el controlador.
                 [self presentViewController:facebook
                                    animated:YES
@@ -310,7 +378,7 @@ static NSString *cellId = @"MarketCellId";
             break;
             
         case 1:
-            //***TWITTER
+            // TWITTER
             // Comprobamos que tengamos configurada una cuenta en el sistema
             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
                 
@@ -319,16 +387,16 @@ static NSString *cellId = @"MarketCellId";
                 
                 // Asignamos un texto para compartir
                 //[twitter setInitialText:@"Aprendiendo a utilizar las API's de Twitter en #iOS"];
-                [twitter setInitialText:nameMarket];
+                [twitter setInitialText:textSocial];
                 
                 // En el caso que queramos adjuntar una imagen podemos hacerlo con función addImage.
                 //[twitter addImage:[UIImage imageNamed:@"img_flea"]];
-                [twitter addImage:img];
+                [twitter addImage:photo.image];
                 
                 // Si queremos asignar una url lo hacaemos con esta función. En iOS 7 se generará una vista previa de la página web si no se le asigna una imagen al tweet.
                 //[twitter addURL:[NSURL URLWithString:@"http://google.es"]];
-                if (market.webURL != nil) {
-                    [twitter addURL:market.webURL];
+                if (webURL != nil) {
+                    [twitter addURL:webURL];
                 }
                 // Aqui asignamos un bloque que nos va a decir el estado de envió del tweet.
                 twitter.completionHandler = ^(SLComposeViewControllerResult result) {
@@ -355,23 +423,23 @@ static NSString *cellId = @"MarketCellId";
             
         case 2:
             //EMAIL
-            {
-                // Email Subject
-                NSString *emailTitle = market.name;
-                // Email Content
-                NSString *messageBody = @"He encontrado este mercadillo en la aplicación LOAKAN y me apetece ir. ¿Vamos juntos?";
-                // To address
-                //NSArray *toRecipents = [NSArray arrayWithObject:@"support@appcoda.com"];
-                
-                MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-                mc.mailComposeDelegate = self;
-                [mc setSubject:emailTitle];
-                [mc setMessageBody:messageBody isHTML:NO];
-                //[mc setToRecipients:toRecipents];
-                
-                // Present mail view controller on screen
-                [self presentViewController:mc animated:YES completion:NULL];
-            }
+        {
+            // Email Subject
+            NSString *emailTitle = nameMarket;
+            // Email Content
+            NSString *messageBody = @"He encontrado este mercadillo en la aplicación LOAKAN y me apetece ir. ¿Vamos juntos?";
+            // To address
+            //NSArray *toRecipents = [NSArray arrayWithObject:@"support@support.com"];
+            
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+            //[mc setToRecipients:toRecipents];
+            
+            // Present mail view controller on screen
+            [self presentViewController:mc animated:YES completion:NULL];
+        }
             break;
             
         default:
@@ -463,7 +531,12 @@ static NSString *cellId = @"MarketCellId";
     
     // Añadimos la etiqueta a la vista
     [self.view addSubview:lblComingSoon];
-
+    
 }
+
+- (void)favoriteWasCreated:(NSNotification *)note {
+    [self loadObjects];
+}
+
 
 @end

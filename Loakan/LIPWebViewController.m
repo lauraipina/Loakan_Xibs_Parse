@@ -14,14 +14,16 @@
 
 @implementation LIPWebViewController
 
--(id) initWithUrl: (NSURL *) aTypeWeb{
+-(id) initWithUrl: (NSURL *) aTypeWeb
+       nameMarket:(NSString *)aNameMarket{
     
     if([super initWithNibName:nil bundle:nil]){
         
         _type = aTypeWeb;
+        _nameMarket = aNameMarket;
         
         //Propiedad heredada, por eso usamos el set
-        self.title = @"Web / Red social";
+        self.title = aNameMarket;
     }
     
     return self;

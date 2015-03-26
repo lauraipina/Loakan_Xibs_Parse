@@ -8,13 +8,17 @@
 
 @import UIKit;
 @import MapKit;
+#import <Parse/Parse.h>
+#import <ParseUI.h>
 
-@class LIPMarket;
-#import "LIPDetailViewController.h"
+@class LIPMarketParse;
 
-@interface LIPMarketViewController : UIViewController <LIPDetailViewController>
+@interface LIPMarketViewController : UIViewController
 
-@property (strong, nonatomic) LIPMarket *model;
+@property (strong, nonatomic) LIPMarketParse *marketParse;
+
+@property (nonatomic, strong) NSArray *favoriteMarkets;
+@property (nonatomic) BOOL isDisplayFavorite;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgMarket;
 @property (weak, nonatomic) IBOutlet UITextView *infoMarket;
@@ -27,6 +31,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *iconFavorite;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic, strong) NSString *market;
+@property (nonatomic, strong) NSString *className;
+
+- (instancetype)initWithClassName:(NSString *)className
+                             market:(LIPMarketParse *)aMarket;
 
 - (IBAction)favoriteBtn:(id)sender;
 

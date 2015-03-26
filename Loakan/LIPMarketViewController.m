@@ -7,33 +7,38 @@
 //
 
 #import "LIPMarketViewController.h"
-#import "LIPMarket.h"
-#import "LIPLocation.h"
-#import "LIPPhotoContainer.h"
+#import "LIPMarketParse.h"
 #import "LIPWebViewController.h"
 #import "LIPLocationViewController.h"
+#import "LIPFavoritesViewController.h"
+#import "LIPMarketsCollectionViewController.h"
 
 @interface LIPMarketViewController ()
 
+@property (assign, nonatomic, getter=isFavorite) BOOL favorite;
+@property (strong, nonatomic) LIPFavoritesViewController *favoritesVC;
+@property (strong, nonatomic) NSUserDefaults *defaults;
+
 @end
+
 
 @implementation LIPMarketViewController
 
 
 #pragma mark - Init
--(id) initWithModel:(id) model{
+- (instancetype)initWithClassName:(NSString *)className
+                           market:(LIPMarketParse *)aMarket{
     
     if (self = [super initWithNibName:nil bundle:nil]) {
-        _model = model;
-        self.title = self.model.name;
+        _marketParse = aMarket;
+        _className = className;
+        self.title = self.marketParse.name;
     }
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     //*** BOTON BACK
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -55,41 +60,39 @@
     
     [super viewWillAppear:animated];
     
-    //volcamos los valores del modelo a la pantalla
-    if(self.model.photo.image == nil){
-        self.imgMarket.image = [UIImage imageNamed:@"ImgNoDisponible"];
-    } else{
-        self.imgMarket.image = self.model.photo.image;    
-    }
-    self.addressMarket.text = self.model.address.address;
-    self.infoMarket.text = self.model.info;
-    self.timetableMarket.text = self.model.timetable;
+    PFImageView *photo = [[PFImageView alloc] init];
+    photo.image = [UIImage imageNamed:@"ImgNoDisponible"]; // placeholder image
+    photo.file = self.marketParse.imageFile; // remote image
+    self.imgMarket.image = photo.image;
     
+    self.infoMarket.text = self.marketParse.info;
+    self.addressMarket.text = self.marketParse.address;
+    self.timetableMarket.text = self.marketParse.timeTable;
+    NSURL *web = self.marketParse.webURL;
+    NSURL *facebook = self.marketParse.facebookURL;
+    NSURL *twitter = self.marketParse.twitterURL;
+    NSURL *instagram = self.marketParse.instagramURL;
     //ocultamos los botones de redes sociales que no tengan url
-    if(self.model.webURL == nil){
+    if(web == nil){
         self.webMarket.hidden = YES;
     }
-    if(self.model.facebookURL == nil){
+    if(facebook == nil){
         self.facebookMarket.hidden = YES;
     }
-    if(self.model.twitterURL == nil){
+    if(twitter == nil){
         self.twitterMarket.hidden = YES;
     }
-    if(self.model.instagramURL == nil){
+    if(instagram == nil){
         self.instagramMarket.hidden = YES;
     }
     
     
-    if(self.model.favoriteValue == NO){
-        
-        UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteDesactive"];
-        [self.iconFavorite setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        
-    } else {
-        
-        UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteActive"];
-        [self.iconFavorite setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    }
+    // Todos los mercados están como FALSE en la BD PARSE
+    // habrá que comprobar si se ha marcado para este usuario como FAVORITO
+    // en NSUserDefaults
+    self.favoritesVC = [[LIPFavoritesViewController alloc] init];
+    self.favorite = [self.favoritesVC isFavoriteMarket:self.marketParse.name];
+    [self updateFavoriteButtonState];
 
     
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:250.0/255
@@ -97,46 +100,29 @@
                                                                            blue:250.0/255
                                                                           alpha:1]];
     self.navigationItem.backBarButtonItem.title = @"";
-    
-   
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  
 }
 
 
 
 - (IBAction)favoriteBtn:(id)sender {
     
-    if(self.model.favoriteValue == NO){
-        
-        // Si está desactivado y lo pulsamos, queremos que se guarde como favorito
-        // Cambiar el icono a ACTIVADO
-        UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteActive"];
-        [self.iconFavorite setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        
-        //Cambiamos el valor boolean
-        self.model.favoriteValue = YES;
-        
-        //Tenemos autoguardado en AppDelegate --> por eso no guardamos
-        
+    NSString *nameMarket = self.marketParse.name;
+    self.favorite = ![self isFavorite];
+    if (self.favorite) {
+        [self.favoritesVC addFavoriteMarket:nameMarket];
     } else {
-        
-        // Si está activado y lo pulsamos, queremos que se desactive
-        // Cambiar el icono a DESACTIVADO
-        UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteDesactive"];
-        [self.iconFavorite setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        
-        
-        //Cambiamos el valor boolean
-        self.model.favoriteValue = NO;
-        
-        //Tenemos autoguardado en AppDelegate --> por eso no guardamos
+        [self.favoritesVC removeFavoriteMarket:nameMarket];
     }
     
+    
+    // Modificar el boton Favorito
+    [self updateFavoriteButtonState];
     
 }
 
@@ -144,7 +130,8 @@
     
     //Creamos una instancia de WebViewController
     LIPWebViewController *webVC = [[LIPWebViewController alloc]
-                                   initWithUrl:self.model.webURL];
+                                   initWithUrl:self.marketParse.webURL
+                                    nameMarket:self.marketParse.name];
     
     //Hacemos un push (añadimos un MVC al NavigationController)
     //No sabemos si estamos en un NavigationController, pero si no estamos,
@@ -155,7 +142,8 @@
 - (IBAction)displayFacebook:(id)sender {
     //Creamos una instancia de WebViewController
     LIPWebViewController *faceVC = [[LIPWebViewController alloc]
-                                   initWithUrl:self.model.facebookURL];
+                                   initWithUrl:self.marketParse.facebookURL
+                                    nameMarket:self.marketParse.name];
     
     //Hacemos un push (añadimos un MVC al NavigationController)
     [self.navigationController pushViewController:faceVC animated:YES];
@@ -166,7 +154,8 @@
     
     //Creamos una instancia de WebViewController
     LIPWebViewController *twVC = [[LIPWebViewController alloc]
-                                   initWithUrl:self.model.twitterURL];
+                                   initWithUrl:self.marketParse.twitterURL
+                                    nameMarket:self.marketParse.name];
     
     //Hacemos un push (añadimos un MVC al NavigationController)
     [self.navigationController pushViewController:twVC animated:YES];
@@ -177,7 +166,8 @@
     
     //Creamos una instancia de WebViewController
     LIPWebViewController *instaVC = [[LIPWebViewController alloc]
-                                         initWithUrl:self.model.instagramURL];
+                                         initWithUrl:self.marketParse.instagramURL
+                                          nameMarket:self.marketParse.name];
     
     //Hacemos un push (añadimos un MVC al NavigationController)
     [self.navigationController pushViewController:instaVC animated:YES];
@@ -189,9 +179,9 @@
     
      //Creamos una instancia de LocationViewController (latitudeValue, longitudValue)
      LIPLocationViewController *locationVC = [[LIPLocationViewController alloc]
-                                              initWithModel:self.model
-                                                latitude:self.model.address.latitudeValue
-                                              longitude:self.model.address.longitudeValue];
+                                              initWithModel:self.marketParse
+                                                latitude:self.marketParse.location.latitude
+                                              longitude:self.marketParse.location.longitude];
      
      //Hacemos un push (añadimos un MVC al NavigationController)
      [self.navigationController pushViewController:locationVC animated:YES];
@@ -200,8 +190,48 @@
 
 - (void) popBack:(id)sender
 {
-    // do your custom handler code here
+    
+    /*if(self.isDisplayFavorite == YES){
+        
+        //Recargar porque pueden haber cambiado los favoritos
+        
+        NSLog(@"Favoritos en MarketVC en popBack %@", self.favoriteMarkets);
+        
+        NSString *nameTable;
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            nameTable = @"Mercados";
+        } else {
+            nameTable = @"Markets";
+        }
+        
+        LIPMarketsCollectionViewController *collectionView = [[LIPMarketsCollectionViewController alloc] initWithClassName:nameTable arrayFavorites:self.favoriteMarkets];
+        
+        collectionView.isDisplayFavorite = YES;
+        
+        PFQuery *query = [PFQuery queryWithClassName:nameTable];
+        [query whereKey:@"name" containedIn:self.favoriteMarkets];
+     
+    }*/
+        
     [self.navigationController popViewControllerAnimated:YES];
+    
+    
 }
+
+- (void)updateFavoriteButtonState {
+    if (self.favorite) {
+        // Cambiar el icono a ACTIVADO
+        UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteActive"];
+        [self.iconFavorite setBackgroundImage:buttonImage forState:UIControlStateNormal];
+        
+    } else {
+        // Cambiar el icono a DESACTIVADO
+        UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteDesactive"];
+        [self.iconFavorite setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    }
+    
+}
+
 
 @end

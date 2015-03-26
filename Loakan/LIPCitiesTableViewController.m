@@ -8,11 +8,10 @@
 
 #import "LIPCitiesTableViewController.h"
 #import "LIPCitiesTableViewCell.h"
-#import "LIPCity.h"
-#import "LIPMarket.h"
 #import "LIPMarketsCollectionViewController.h"
 #import "LIPInfoViewController.h"
 #import "LIPTutorialViewController.h"
+#import "LIPFavoritesViewController.h"
 
 @interface LIPCitiesTableViewController ()
 
@@ -20,14 +19,41 @@
 
 @implementation LIPCitiesTableViewController
 
-//La primera vez que se entra en la app, salta el tutorial de ayuda
+//Customizamos la tabla obtenida del backend en PARSE
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        
+        // Custom the table
+        
+        // The className to query on
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            self.parseClassName = @"Ciudades";
+        } else {
+            self.parseClassName = @"Cities";
+        }
+        
+        // The key of the PFObject to display in the label of the default cell style
+        self.textKey = @"name";
+        
+        // The title for this table in the Navigation Controller.
+        self.title = @"Ciudades";
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = YES;
+        
+        // The number of objects to show per page
+        //self.objectsPerPage = 10;
+    }
+    return self;
+}
 
-/*NSUserDefaults *theDefaults = [NSUserDefaults standardUserDefaults];
- vecesLeido = [theDefaults integerForKey:@"hasRead"] + 1;
- [theDefaults setInteger:vecesLeido forKey:@"hasRead"];
- [theDefaults synchronize];
- */
-
+#pragma mark - View lifecycle
 - (void)viewDidLoad {
 
     [super viewDidLoad];
@@ -45,6 +71,7 @@
                                                      green:241/255.0
                                                       blue:241/255.0
                                                      alpha:1];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -117,37 +144,61 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Parse
+// Este método se llama cada vez que los objetos se cargan desde Parse a través de la PFQuery
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    //NSLog(@"error: %@", [error localizedDescription]);
+}
+
+// Este método se llama antes de que un PFQuery se dispara para conseguir más objetos
+- (void)objectsWillLoad {
+    [super objectsWillLoad];
+}
 
 
--(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+// Override para personalizar qué tipo de consulta a realizar en la clase.
+// Por defecto, todos los objetos de la Query serán ordenados por createdAt descendente.
+- (PFQuery *)queryForTable {
     
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
-    // averiguar cual es la ciudad
-    LIPCity *city = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-    // crear la celda estandar
-    /*static NSString *cellID = @"CityID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                      reuseIdentifier:cellID];
+    // Si no hay objetos cargados en la memoria, miramos a la caché de primera para llenar la tabla
+    // Y, posteriormente, hacer una consulta en la red.
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
-    // configurar (sincronizo modelo-vista)
-    cell.textLabel.text = city.name;*/
+    
+    [query orderByAscending:@"name"];
+    
+    return query;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     
     
     // Creo una celda personalizada
     LIPCitiesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[LIPCitiesTableViewCell cellId] forIndexPath:indexPath];
     
     // La configuro (sincronizo modelo -> vista)
-    cell.cityLabel.text = city.name;
+    cell.cityLabel.text = [object objectForKey:@"name"];
     cell.cityLabel.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
-    cell.numMarketLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)city.markets.count];
-    cell.numMarketLabel.font = [UIFont fontWithName:@"Caviar Dreams" size:18];
-
     
-    // devolverla
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    cell.numMarketLabel.text = [object objectForKey:@"markets"];
+    cell.numMarketLabel.font = [UIFont fontWithName:@"Caviar Dreams" size:18];
+    
+    // La devuelvo
     return cell;
     
 }
@@ -156,18 +207,24 @@
     return [LIPCitiesTableViewCell height];
 }
 
-#pragma mark - Delegate
+#pragma mark - TableView Delegate
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+
+    PFObject *citySelected = [self.objects objectAtIndex:indexPath.row];
+    
+    NSString *city = [citySelected objectForKey:@"name"];
+    
     // Averiguar cual es la ciudad
-    LIPCity *city = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if([city.name isEqualToString:@"Ibiza"] ||
-       [city.name isEqualToString:@"Berlin"] ||
-       [city.name isEqualToString:@"Amsterdam"] ||
-       [city.name isEqualToString:@"Paris"] ||
-       [city.name isEqualToString:@"Nueva York"] ||
-       [city.name isEqualToString:@"Buenos Aires"])
+    if([city isEqualToString:@"Ibiza"] ||
+       [city isEqualToString:@"Berlin"] ||
+       [city isEqualToString:@"Amsterdam"] ||
+       [city isEqualToString:@"Paris"] ||
+       [city isEqualToString:@"Nueva York"] ||
+       [city isEqualToString:@"Buenos Aires"])
     {
         
         //Si no hay mercados, muestro un mensaje "Proximamente" temporal
@@ -229,100 +286,72 @@
         [self.view addSubview:lblComingSoon];
         
     }else{
+        
         // Creo la selección de datos de esa ciudad
-        NSFetchRequest *r = [NSFetchRequest fetchRequestWithEntityName:[LIPMarket entityName]];
+        PFQuery *query;
         
-        r.fetchBatchSize = 30;
-        r.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:LIPMarketAttributes.name
-                                                            ascending:YES
-                                                             selector:@selector(caseInsensitiveCompare:)]];
-        
-        r.predicate = [NSPredicate predicateWithFormat:@"city == %@", city];
-        
-        NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:r
-                                                                             managedObjectContext:self.fetchedResultsController.managedObjectContext
-                                                                               sectionNameKeyPath:nil cacheName:nil];
-        
-        
-        // Creo el layout del CollectionViewController
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.minimumInteritemSpacing = 10;
-        layout.itemSize = CGSizeMake(145, 150);
-        
-        CGSize result = [[UIScreen mainScreen] bounds].size;
-        if(result.height == 480 || result.height == 568)
-        {
-            // iPhone 4 o 5
-            layout.minimumLineSpacing = 10;
-            layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            query = [PFQuery queryWithClassName:@"Mercados"];
+        } else {
+            query = [PFQuery queryWithClassName:@"Markets"];
         }
-        else if(result.height == 667)
-        {
-            // iPhone 6 o 6 plus
-            layout.minimumLineSpacing = 30;
-            layout.sectionInset = UIEdgeInsetsMake(30, 30, 30, 30);
-        }
-        else if(result.height == 736)
-        {
-            // iPhone 6 o 6 plus
-            layout.minimumLineSpacing = 40;
-            layout.sectionInset = UIEdgeInsetsMake(40, 40, 40, 40);
-        }
+        
+        [query whereKey:@"city" equalTo:city];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            
+            if (error) {
+                
+                NSLog(@"Error: %@ %@", objects, error);
+                
+            } else {
+                
+                __block NSString *nameTable;
+                NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+                if([language isEqualToString:@"es"]) {
+                    nameTable = @"Mercados";
+                } else {
+                    nameTable = @"Markets";
+                }
 
-        
-        
-        // Creo una instancia de CollectionViewController
-        LIPMarketsCollectionViewController *markets = [LIPMarketsCollectionViewController coreDataCollectionViewControllerWithFetchedResultsController:fc
-                                                                                                                                                layout:layout];
-        
-        markets.collectionView.backgroundColor = [UIColor lightGrayColor];
-        
-        
-        //Si hay mercados para esa ciudad, pusheo y creo collectionview
-        // Lo pusheo
-        [self.navigationController pushViewController:markets
-                                             animated:YES];
+                //NSLog(@"Successfully retrieved %lu markets.",(unsigned long)objects.count);
+                
+                // Creo una instancia de CollectionViewController
+                LIPMarketsCollectionViewController *controller = [[LIPMarketsCollectionViewController alloc] initWithClassName:nameTable city:city];
+                
+                // Lo pusheo
+                [self.navigationController pushViewController:controller animated:YES];
+                
+            }
+        }];
     }
-    
-    
 }
 #pragma mark - Actions
 -(void)addFavorite:(id) sender{
     
-    // Creo la selección de mercadillos favoritos
-    NSFetchRequest *r = [NSFetchRequest fetchRequestWithEntityName:[LIPMarket entityName]];
+    // Obtenemos los mercadillos favoritos guardados en NSUserDefault
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    r.fetchBatchSize = 30;
-    r.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:LIPMarketAttributes.name
-                                                        ascending:YES
-                                                         selector:@selector(caseInsensitiveCompare:)]];
+    NSArray *favoriteMarkets = [defaults objectForKey:@"favorites"];
     
-    r.predicate = [NSPredicate predicateWithFormat:@"favorite == %d", 1];
+    NSString *nameTable;
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if([language isEqualToString:@"es"]) {
+        nameTable = @"Mercados";
+    } else {
+        nameTable = @"Markets";
+    }
+
+    // Creo una instancia de CollectionViewController con el Array obtenido
+    LIPMarketsCollectionViewController *controller = [[LIPMarketsCollectionViewController alloc] initWithClassName:nameTable arrayFavorites:favoriteMarkets];
     
-    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:r
-                                                                         managedObjectContext:self.fetchedResultsController.managedObjectContext
-                                                                           sectionNameKeyPath:nil cacheName:nil];
-    
-    
-    // Creo el layout del CollectionViewController
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.minimumLineSpacing = 10;
-    layout.minimumInteritemSpacing = 10;
-    layout.itemSize = CGSizeMake(145, 150);
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    
-    // Creo una instancia de CollectionViewController
-    LIPMarketsCollectionViewController *markets = [LIPMarketsCollectionViewController coreDataCollectionViewControllerWithFetchedResultsController:fc layout:layout];
-    
-    markets.collectionView.backgroundColor = [UIColor lightGrayColor];
-    markets.isDisplayFavorite = YES;
+    controller.isDisplayFavorite = YES;
     
     // Si hay mercados favoritos, pusheo y creo collectionview
     // Lo pusheo
-    [self.navigationController pushViewController:markets
-                                         animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 -(void)infoMore{
@@ -332,7 +361,6 @@
     // Lo pusheo
     [self.navigationController pushViewController:info
                                          animated:YES];
-    
     
 }
 

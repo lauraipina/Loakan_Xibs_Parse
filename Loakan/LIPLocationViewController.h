@@ -10,6 +10,7 @@
 @import MapKit;
 @class LIPLocation;
 @class LIPMarket;
+@class LIPMarketParse;
 
 @interface LIPLocationViewController : UIViewController
 
@@ -19,8 +20,9 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (strong, nonatomic) LIPMarket *model;
+@property (strong, nonatomic) LIPMarketParse *modelParse;
 
--(id)initWithModel:(LIPMarket *)aModel latitude:(double) aLatitude longitude:(double)aLongitude;
+-(id)initWithModel:(LIPMarketParse *)aModel latitude:(double) aLatitude longitude:(double)aLongitude;
 
 - (IBAction)standardMap:(id)sender;
 - (IBAction)satelliteMap:(id)sender;

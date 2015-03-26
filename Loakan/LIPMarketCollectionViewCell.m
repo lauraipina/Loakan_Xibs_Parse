@@ -8,7 +8,6 @@
 
 #import "LIPMarketCollectionViewCell.h"
 #import "LIPLocationViewController.h"
-#import "LIPLocation.h"
 
 @implementation LIPMarketCollectionViewCell
 

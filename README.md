@@ -1,3 +1,3 @@
-## Loakan_CoreData
+## Loakan_Parse
  
-Proyecto final - Curso iOS en AGBO
+Proyecto final con backend Parse - Curso iOS en AGBO

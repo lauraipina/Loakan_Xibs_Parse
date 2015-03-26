@@ -7,24 +7,15 @@
 //
 
 #import "AppDelegate.h"
+@import Parse;
 
-#import "LIPCoreDataStack.h"
-#import "LIPCity.h"
 #import "LIPCitiesTableViewController.h"
-#import "LIPMarket.h"
-#import "LIPLocation.h"
-#import "LIPPhotoContainer.h"
 #import "LIPTutorialViewController.h"
 
-#define AUTO_SAVE YES
-#define AUTO_SAVE_DELAY 30
-
-
+#define APPLICATION_ID 	@"7QqqkqS9Y4UCQW6xuHNXxbDSV7V4F1V7Lvfz7aTj"
+#define CLIENT_KEY 		@"9NVLTMN6rxYxsRDjEvJye1op0nm5mNY7dHOUvFUa"
 
 @interface AppDelegate ()
-
-// Creamos la propiedad que va a guardar nuestro Stack dentro de la aplicación.
-@property (strong, nonatomic) LIPCoreDataStack *coreDataStack;
 
 @end
 
@@ -38,51 +29,69 @@
     //Antes de nada, cambiamos el aspecto
     [self customizeAppearance];
     
+    // *** PARSE
+    // Registra la aplicación con nuestra app registrada en Parse
+    [Parse setApplicationId:APPLICATION_ID clientKey:CLIENT_KEY];
+    // Envía una notificación a Parse para indicar que hemos abierto la aplicación en el simulador.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
-    // Creamos la instancia LIPCoreDataStack
-    // A partir de esto ya podemos empezar a crear objectos LIPCity, LIPMarket...
-    self.coreDataStack = [LIPCoreDataStack coreDataStackWithModelName:@"Model"];
+    LIPCitiesTableViewController *citiesTVC = [[LIPCitiesTableViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:citiesTVC];
     
     
-    // Creamos lista ciudades con sus mercadillos
-    [self createListCities];
+    PFObject *miMercado = [PFObject objectWithClassName:@"Mercados"];
+    PFObject *myMarket = [PFObject objectWithClassName:@"Markets"];
     
-    //Creamos el conjunto de datos
-    NSFetchRequest *r = [NSFetchRequest fetchRequestWithEntityName:[LIPCity entityName]];
-    //no mas de 15 registros en la tabla
-    r.fetchBatchSize = 15;
-    //Ordenamos la busqueda
-    r.sortDescriptors = @[[NSSortDescriptor
-                           sortDescriptorWithKey:LIPCityAttributes.name
-                           ascending:YES
-                           selector:@selector(caseInsensitiveCompare:)]];
+    NSString *name = @"Mercado Ranas";
+    NSString *web = @"http://www.barrioletras.com/lang/es/195-el-mercado-de-las-ranas";
+    NSString *face = @"https://www.facebook.com/mercadodelasranas";
+    NSString *tw = @"";
+    NSString *insta = @"";
+    NSString *dire = @"Barrio de las Letras, Madrid";
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:40.414371 longitude:-3.698402];
+    NSString *city = @"Madrid";
     
-    //Creamos el FetchedResultsController
-    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc]
-                                      initWithFetchRequest:r
-                                      managedObjectContext:self.coreDataStack.context
-                                      sectionNameKeyPath:nil
-                                      cacheName:nil];
     
-    //Creamos el controlador
-    LIPCitiesTableViewController *citiesVC = [[LIPCitiesTableViewController alloc]
-                                              initWithFetchedResultsController:fc
-                                              style:UITableViewStylePlain];
-    
-    // Lo metemos en un NavigationController
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:citiesVC];
-    
-    // Lo asignamos al rootViewController
-    self.window.rootViewController = nav;
-    
-    //Arrancamos el autosave, una vez hecho el NSFetchRequest
-    [self autosave];
+
+
+
 
     
-    self.window.backgroundColor = [UIColor whiteColor];
+    [miMercado setObject:name forKey:@"name"];
+    [miMercado setObject:@"Se convierte en un zona comercial de referencia, emulando otros mercados mundialmente conocidos en las principales ciudades del mundo." forKey:@"info"];
+    [miMercado setObject:@"Consulta la web." forKey:@"timetable"];
+    [miMercado setObject:web forKey:@"web"];
+    [miMercado setObject:face forKey:@"facebook"];
+    [miMercado setObject:tw forKey:@"twitter"];
+    [miMercado setObject:insta forKey:@"instagram"];
+    [miMercado setObject:dire forKey:@"address"];
+    [miMercado setObject:city forKey:@"city"];
+    [miMercado setObject:geoPoint forKey:@"location"];
+
+    
+     [myMarket setObject:name forKey:@"name"];
+     [myMarket setObject:@"It becomes a commercial reference area, emulating other world-known markets in major cities worldwide." forKey:@"info"];
+     [myMarket setObject:@"Variable. Check web." forKey:@"timetable"];
+     [myMarket setObject:web forKey:@"web"];
+     [myMarket setObject:face forKey:@"facebook"];
+     [myMarket setObject:tw forKey:@"twitter"];
+     [myMarket setObject:insta forKey:@"instagram"];
+     [myMarket setObject:dire forKey:@"address"];
+     [myMarket setObject:city forKey:@"city"];
+     [myMarket setObject:geoPoint forKey:@"location"];
+    
+    
+    
+    /*
+     [miMercado save];
+     [myMarket save];
+    */
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -110,218 +119,6 @@
 
 #pragma mark - Utils
 
-- (void)createListCities {
-    
-    [self.coreDataStack zapAllData];
-    
-    
-    // Ciudades
-    // *** MADRID
-    LIPCity *madrid = [LIPCity cityWithName:@"Madrid"
-                                    context:self.coreDataStack.context];
-    LIPMarket *rastro = [LIPMarket marketWithName:@"El Rastro"
-                                             info:@"El Rastro de Madrid es un mercado al aire libre, originalmente de objetos de segunda mano, que se monta todas las mañanas de domingos y festivos en un barrio castizo del centro histórico de la capital de España."
-                                        timetable:@"Domingos y festivos de 9:00 a 15:00"
-                                              web:@"http://www.elrastro.org"
-                                          twitter:nil
-                                         facebook:nil
-                                        instagram:nil
-                                          context:self.coreDataStack.context];
-    
-    LIPLocation *locRastro = [LIPLocation locationWithAddress:@"Calle Ribera de Curtidores, s/n, 28005 Madrid"
-                                                     latitude:40.409109
-                                                    longitude:-3.707162
-                                                      context:self.coreDataStack.context];
-    
-    UIImage *rastroImage = [UIImage imageNamed:@"img_rastro"];
-    LIPPhotoContainer *photoRastro = [LIPPhotoContainer photoWithImage:rastroImage
-                                                               context:self.coreDataStack.context];
-    
-    rastro.city = madrid;
-    locRastro.market = rastro;
-    photoRastro.markets = rastro;
-    
-    LIPMarket *nomada = [LIPMarket marketWithName:@"Nomada Market"
-                                             info:@"Convertido en fenómeno social y cultural, Nómada Market es más que una feria, ha crecido e incorporado actividades paralelas como talleres, cine, exposiciones, espacios de lectura y gastronomía."
-                                        timetable:@"Consultar fechas en la web."
-                                              web:@"http://www.nomadamarket.com"
-                                          twitter:@"https://twitter.com/nomadamarket"
-                                         facebook:@"https://www.facebook.com/marketnomada"
-                                        instagram:@"http://instagram.com/nomada_market"
-                                          context:self.coreDataStack.context];
-    LIPLocation *locNomada = [LIPLocation locationWithAddress:@"Estación de Chamartín, Ático, 28036 Madrid"
-                                                     latitude:40.471240
-                                                    longitude:-3.682930
-                                                      context:self.coreDataStack.context];
-    
-    UIImage *nomadaImage = [UIImage imageNamed:@"img_nomada"];
-    LIPPhotoContainer *photoNomada = [LIPPhotoContainer photoWithImage:nomadaImage
-                                                               context:self.coreDataStack.context];
-    
-    nomada.city = madrid;
-    locNomada.market = nomada;
-    photoNomada.markets = nomada;
-    
-    
-    LIPMarket *vaqueria = [LIPMarket marketWithName:@"La Vaquería"
-                                               info:@"Es un espacio de concepto novedoso que pretende convertirse en el hogar permanentemente efímero de las tan de moda ‘pop up stores‘, un lugar que semanalmente irá mutando."
-                                          timetable:@"Consultar fechas en la web."
-                                                web:@"http://pop-up.lavaqueria.biz"
-                                            twitter:@"https://twitter.com/VAQUERIA16"
-                                           facebook:@"https://www.facebook.com/popup.vaqueria"
-                                          instagram:@"https://instagram.com/vaqueria16/"
-                                            context:self.coreDataStack.context];
-    LIPLocation *locVaqueria = [LIPLocation locationWithAddress:@"Calle San Joaquin 16 28004 Madrid"
-                                                       latitude:40.424427
-                                                      longitude:-3.701779
-                                                        context:self.coreDataStack.context];
-    
-    UIImage *vaqueriaImage = [UIImage imageNamed:@"img_vaqueria"];
-    LIPPhotoContainer *photoVaqueria = [LIPPhotoContainer photoWithImage:vaqueriaImage
-                                                                 context:self.coreDataStack.context];
-    
-    vaqueria.city = madrid;
-    locVaqueria.market = vaqueria;
-    photoVaqueria.markets = vaqueria;
-    
-    
-    LIPMarket *mcd = [LIPMarket marketWithName:@"MCD"
-                                           info:@"El Mercado Central de Diseño es diseño, compras, talleres, actuaciones en directo, food trucks, más diseño y mucho amor."
-                                      timetable:@"Consultar fechas en la web."
-                                            web:@"http://www.mercadocentraldediseno.es"
-                                        twitter:@"https://twitter.com/mercadocdiseno"
-                                       facebook:@"https://www.facebook.com/MercadoCentralDiseno"
-                                      instagram:@"https://instagram.com/mercadocentraldiseno/"
-                                        context:self.coreDataStack.context];
-    
-    LIPLocation *locMcd = [LIPLocation locationWithAddress:@"Matadero Madrid. Paseo de la Chopera, 14"
-                                                   latitude:40.392673
-                                                  longitude:-3.697303
-                                                    context:self.coreDataStack.context];
-    
-    UIImage *mcdImage = [UIImage imageNamed:@"img_mcd"];
-    LIPPhotoContainer *photoMcd = [LIPPhotoContainer photoWithImage:mcdImage
-                                                             context:self.coreDataStack.context];
-    
-    mcd.city = madrid;
-    locMcd.market = mcd;
-    photoMcd.markets = mcd;
-
-    
-    
-    // *** BARCELONA
-    LIPCity *barna = [LIPCity cityWithName:@"Barcelona"
-                                   context:self.coreDataStack.context];
-    LIPMarket *flea = [LIPMarket marketWithName:@"Flea Market"
-                                           info:@"El Flea Market Barcelona es un mercadillo mensual donde la gente vende y intercambia productos de segunda mano, tales como ropa, accesorios, libros y música en buen estado a precios razonables."
-                                      timetable:@"2º domingo de cada mes de 11h a 19h"
-                                            web:@"http://www.fleamarketbcn.com/?lang=es"
-                                        twitter:@"https://twitter.com/fleamarketbcn"
-                                       facebook:@"https://www.facebook.com/fleamarketbcn"
-                                      instagram:@"http://instagram.com/fleamarketbcn"
-                                        context:self.coreDataStack.context];
-    
-    LIPLocation *locFlea = [LIPLocation locationWithAddress:@"Plaça de Blanquerna, 08001 Barcelona"
-                                                   latitude:41.375505
-                                                  longitude:2.174860
-                                                    context:self.coreDataStack.context];
-    
-    UIImage *fleaImage = [UIImage imageNamed:@"img_flea"];
-    LIPPhotoContainer *photoFlea = [LIPPhotoContainer photoWithImage:fleaImage
-                                                             context:self.coreDataStack.context];
-    
-    flea.city = barna;
-    locFlea.market = flea;
-    photoFlea.markets = flea;
-    
-    
-    LIPMarket *lost = [LIPMarket marketWithName:@"Lost&Found Market"
-                                           info:@"Lost&Found Market es un mercado de artículos de segunda mano que nace para ofrecer un espacio relacional, interactivo y popular donde desarrollar una forma lúdica y sostenible de comercio."
-                                      timetable:@"Consultar fechas en la web."
-                                            web:@"http://lostfoundmarket.com"
-                                        twitter:@"https://twitter.com/lostfoundmarkt"
-                                       facebook:@"https://www.facebook.com/lostandfoundmarket"
-                                      instagram:nil
-                                        context:self.coreDataStack.context];
-    
-    LIPLocation *locLost = [LIPLocation locationWithAddress:@"Estación de Francia, Barcelona"
-                                                   latitude:41.384238
-                                                  longitude:2.186470
-                                                    context:self.coreDataStack.context];
-    
-    UIImage *lostImage = [UIImage imageNamed:@"img_lost"];
-    LIPPhotoContainer *photoLost = [LIPPhotoContainer photoWithImage:lostImage
-                                                             context:self.coreDataStack.context];
-    
-    lost.city = barna;
-    locLost.market = lost;
-    photoLost.markets = lost;
-    
-    // *** IBIZA
-    //LIPCity *ibiza = [LIPCity cityWithName:@"Ibiza" context:self.coreDataStack.context];
-    
-    
-    // *** LONDRES
-    LIPCity *londres = [LIPCity cityWithName:@"Londres"
-                                     context:self.coreDataStack.context];
-    LIPMarket *camdem = [LIPMarket marketWithName:@"Camden Markets"
-                                           info:@"El Mercado de Camdem está formado por varios mercados donde se vende artesanía y prendas de vestir. Es una de las principales atracciones turísticas de Londres."
-                                      timetable:@"Todos los días de 10h a 18h. Excepto Navidad"
-                                            web:@"http://www.camdenmarket.com"
-                                        twitter:@"https://twitter.com/camdenmarket"
-                                       facebook:@"https://www.facebook.com/CamdenMarketLDN"
-                                      instagram:@"https://instagram.com/camdenmarketldn/"
-                                        context:self.coreDataStack.context];
-    
-    LIPLocation *locCamdem = [LIPLocation locationWithAddress:@"Camden High Street, London"
-                                                   latitude:51.538434
-                                                  longitude:-0.142021
-                                                    context:self.coreDataStack.context];
-    
-    UIImage *camdemImage = [UIImage imageNamed:@"img_camdem"];
-    LIPPhotoContainer *photoCamdem = [LIPPhotoContainer photoWithImage:camdemImage
-                                                             context:self.coreDataStack.context];
-    
-    camdem.city = londres;
-    locCamdem.market = camdem;
-    photoCamdem.markets = camdem;
-
-    
-    // *** PARIS
-    //LIPCity *paris = [LIPCity cityWithName:@"Paris" context:self.coreDataStack.context];
-    
-    // *** NUEVA YORK
-    LIPCity *ny = [LIPCity cityWithName:@"Nueva York"
-                                context:self.coreDataStack.context];
-
-    // *** BERLIN
-    LIPCity *berlin = [LIPCity cityWithName:@"Berlin" context:self.coreDataStack.context];
-    
-    
-    // *** AMSTERDAM
-    //LIPCity *amsterdam = [LIPCity cityWithName:@"Amsterdam" context:self.coreDataStack.context];
-    
-    // *** BUENOS AIRES
-    //LIPCity *baires = [LIPCity cityWithName:@"Buenos Aires" context:self.coreDataStack.context];
-    
-    // *** BALI
-    //LIPCity *bali = [LIPCity cityWithName:@"Bali" context:self.coreDataStack.context];
-    
-    // *** HONG KONG
-    //LIPCity *hongKong = [LIPCity cityWithName:@"Hong Kong" context:self.coreDataStack.context];
-    
-    // *** SINGAPUR
-    //LIPCity *singapur = [LIPCity cityWithName:@"Singapur" context:self.coreDataStack.context];
-    
-    
-    //Se guarda en la BD SIN ORDEN
-    [self.coreDataStack saveWithErrorBlock:^(NSError *error) {
-        NSLog(@"Error al guardar en AppDelegate%@", error);
-    }];
-}
-
-
-
 -(void)customizeAppearance{
     
     
@@ -335,19 +132,5 @@
                                                            NSFontAttributeName:
                                                                [UIFont fontWithName:@"CaviarDreams-Bold" size:18 ]}];    
 }
--(void)autosave{
-    
-    if (AUTO_SAVE) {
-        //NSLog(@"Autoguardando....");
-        
-        [self.coreDataStack saveWithErrorBlock:^(NSError *error) {
-            NSLog(@"Error al auto-guardar %s \n\n %@", __func__, error);
-        }];
-        
-        [self performSelector:@selector(autosave)
-                   withObject:nil afterDelay:AUTO_SAVE_DELAY];
-    }
-}
-
 
 @end

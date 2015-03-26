@@ -8,13 +8,21 @@
 
 @import UIKit;
 @import Social;
+#import <ParseUI/PFQueryCollectionViewController.h>
 
-#import "LIPCoreDataCollectionViewController.h"
+@interface LIPMarketsCollectionViewController : PFQueryCollectionViewController
 
-@class LIPCity;
-
-@interface LIPMarketsCollectionViewController : LIPCoreDataCollectionViewController
-
+@property (nonatomic, strong) NSArray *favoriteMarkets;
 @property (nonatomic) BOOL isDisplayFavorite;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *className;
+
+@property (nonatomic) BOOL isFavorite;
+
+- (instancetype)initWithClassName:(NSString *)className
+                             city:(NSString *)aCity;
+
+- (instancetype)initWithClassName:(NSString *)className
+                   arrayFavorites:(NSArray *)myFavoriteMarkets;
 
 @end
