@@ -13,9 +13,14 @@
 #import "LIPTutorialViewController.h"
 #import "LIPFavoritesViewController.h"
 
-@interface LIPCitiesTableViewController ()
+@interface LIPCitiesTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
+
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end
+
 
 @implementation LIPCitiesTableViewController
 
@@ -49,6 +54,7 @@
         
         // The number of objects to show per page
         //self.objectsPerPage = 10;
+
     }
     return self;
 }
@@ -71,6 +77,54 @@
                                                      green:241/255.0
                                                       blue:241/255.0
                                                      alpha:1];
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if([language isEqualToString:@"es"]) {
+        
+        self.searchBar.placeholder = @"Buscar";
+        [[UIButton appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:@"Cancelar" forState:UIControlStateNormal];
+       
+    } else {
+        
+        self.searchBar.placeholder = @"Search";
+        [[UIButton appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:@"Cancel" forState:UIControlStateNormal];
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                             [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1],
+                             NSForegroundColorAttributeName,
+                             [UIFont fontWithName:@"CaviarDreams-Bold" size:15],NSFontAttributeName,
+                             nil]
+     forState:UIControlStateNormal];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                             [UIColor darkGrayColor],
+                             NSForegroundColorAttributeName,
+                             [UIFont fontWithName:@"CaviarDreams-Bold" size:15],NSFontAttributeName,
+                             nil]
+     forState:UIControlStateHighlighted];
+
+    
+    self.tableView.tableHeaderView = self.searchBar;
+    
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar
+                                                              contentsController:self];
+    self.searchController.searchResultsDataSource = self;
+    self.searchController.searchResultsDelegate = self;
+    self.searchController.delegate = self;
+    
+    /*
+    // Si queremos esconder el searchBar
+    CGPoint offset = CGPointMake(0, self.searchBar.frame.size.height);
+    self.tableView.contentOffset = offset;
+    */
+    
+    self.searchResults = [NSMutableArray array];
     
 }
 
@@ -144,6 +198,79 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UISearch
+- (void)filterResults:(NSString *)searchTerm {
+    
+    [self.searchResults removeAllObjects];
+    
+    PFQuery *query = [PFQuery queryWithClassName: self.parseClassName];
+    [query whereKeyExists:@"name"];
+    [query whereKey:@"name" containsString:searchTerm];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+        
+        if(!error){
+            
+            //NSLog(@"%@", results);
+            //NSLog(@"%lu", (unsigned long)results.count);
+            
+            [self.searchResults addObjectsFromArray:results];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+            
+        }
+        
+    }];
+
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [self.searchResults removeAllObjects];
+    
+    PFQuery *query = [PFQuery queryWithClassName: self.parseClassName];
+    [query whereKeyExists:@"name"];
+    [query whereKey:@"name" containsString:searchText];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+        
+        if(!error){
+            
+            //NSLog(@"%@", results);
+            //NSLog(@"%lu", (unsigned long)results.count);
+            
+            [self.searchResults addObjectsFromArray:results];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+            
+        }
+        
+    }];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.searchDisplayController setActive:YES];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self filterResults:searchBar.text];
+    [self.searchDisplayController.searchResultsTableView reloadData];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:  (NSString *)searchString {
+    
+
+    /*[self filterResults:searchString];
+    [self.searchDisplayController.searchResultsTableView reloadData];*/
+    
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+
 #pragma mark - Parse
 // Este método se llama cada vez que los objetos se cargan desde Parse a través de la PFQuery
 - (void)objectsDidLoad:(NSError *)error {
@@ -174,37 +301,79 @@
     return query;
 }
 
+//Se vuelve a implementar para que no se rompa al limpiar el filtro de búsqueda
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *obj = nil;
+    if (indexPath.row < self.objects.count)
+    {
+        obj = [self.objects objectAtIndex:indexPath.row];
+    }
+    
+    return obj;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     
+    LIPCitiesTableViewCell *cell = (LIPCitiesTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:[LIPCitiesTableViewCell cellId]];
     
-    // Creo una celda personalizada
-    LIPCitiesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[LIPCitiesTableViewCell cellId] forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[LIPCitiesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[LIPCitiesTableViewCell cellId]];
+    }
     
-    // La configuro (sincronizo modelo -> vista)
-    cell.cityLabel.text = [object objectForKey:@"name"];
-    cell.cityLabel.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+    if (tableView != self.searchDisplayController.searchResultsTableView) {
+        
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        
+        // La configuro (sincronizo modelo -> vista)
+        cell.cityLabel.text = [object objectForKey:@"name"];
+        cell.cityLabel.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+        
+        cell.numMarketLabel.text = [object objectForKey:@"markets"];
+        cell.numMarketLabel.font = [UIFont fontWithName:@"Caviar Dreams" size:18];
+    }
     
+    else if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        
+        PFObject *searchedUser = [self.searchResults objectAtIndex:indexPath.row];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    cell.numMarketLabel.text = [object objectForKey:@"markets"];
-    cell.numMarketLabel.font = [UIFont fontWithName:@"Caviar Dreams" size:18];
-    
-    // La devuelvo
+        // La configuro (sincronizo modelo -> vista)
+        cell.cityLabel.text = [searchedUser objectForKey:@"name"];
+        cell.cityLabel.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+        
+        cell.numMarketLabel.text = [searchedUser objectForKey:@"markets"];
+        cell.numMarketLabel.font = [UIFont fontWithName:@"Caviar Dreams" size:18];
+    }
     return cell;
     
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [LIPCitiesTableViewCell height];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == self.tableView) {
+        return self.objects.count;
+    } else {
+        return self.searchResults.count;
+    }
+}
+
+- (void)callbackLoadObjectsFromParse:(NSArray *)result error:(NSError *)error {
+    if (!error) {
+        [self.searchResults removeAllObjects];
+        [self.searchResults addObjectsFromArray:result];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+    } else {
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
+    }
 }
 
 #pragma mark - TableView Delegate
@@ -214,7 +383,16 @@
     
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 
-    PFObject *citySelected = [self.objects objectAtIndex:indexPath.row];
+    PFObject *citySelected;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        
+        citySelected = [self.searchResults objectAtIndex:indexPath.row];
+        
+    } else {
+        
+        citySelected = [self.objects objectAtIndex:indexPath.row];
+    }
     
     NSString *city = [citySelected objectForKey:@"name"];
     
@@ -224,6 +402,9 @@
        [city isEqualToString:@"Amsterdam"] ||
        [city isEqualToString:@"Paris"] ||
        [city isEqualToString:@"Nueva York"] ||
+       [city isEqualToString:@"New York"] ||
+       [city isEqualToString:@"London"] ||
+       [city isEqualToString:@"Londres"] ||
        [city isEqualToString:@"Buenos Aires"])
     {
         
@@ -314,8 +495,6 @@
                 } else {
                     nameTable = @"Markets";
                 }
-
-                //NSLog(@"Successfully retrieved %lu markets.",(unsigned long)objects.count);
                 
                 // Creo una instancia de CollectionViewController
                 LIPMarketsCollectionViewController *controller = [[LIPMarketsCollectionViewController alloc] initWithClassName:nameTable city:city];
@@ -327,6 +506,7 @@
         }];
     }
 }
+
 #pragma mark - Actions
 -(void)addFavorite:(id) sender{
     
