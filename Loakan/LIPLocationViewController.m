@@ -21,7 +21,12 @@
         _modelParse = aModel;
         _latitude = aLatitude;
         _longitude = aLongitude;
-        self.title = @"Localización";
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            self.title = @"Localización";
+        } else {
+            self.title = @"Location";
+        }
     }
     return self;
 }

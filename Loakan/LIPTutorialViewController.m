@@ -95,8 +95,13 @@
         //Le ponemos una condicion: si se han acabado las imagenes, que corte..
         //Le sumamos un 1 pq las imagenes empiezan en 0
         NSString *imageName = nil;
-        imageName = [NSString stringWithFormat:@"Tutorial_%lu",(nimages +1)];
-       
+        
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            imageName = [NSString stringWithFormat:@"Tutorial_%lu",(nimages +1)];
+        } else {
+            imageName = [NSString stringWithFormat:@"Tutorial_en_%lu",(nimages +1)];
+        }
         //Fabricamos una imagen con el objeto UIImage
         UIImage *image = [UIImage imageNamed:imageName];
         

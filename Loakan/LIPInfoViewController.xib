@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="CaviarDreams.ttf">
@@ -20,7 +21,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LIPInfoViewController">
             <connections>
+                <outlet property="lbl1" destination="vl0-iP-Zaf" id="SzV-BN-I0p"/>
+                <outlet property="lbl2" destination="Hgo-D2-2S1" id="l8u-w5-Oky"/>
+                <outlet property="lbl3" destination="LNj-Ny-ihO" id="C45-Bo-ISd"/>
+                <outlet property="lbl4" destination="n3i-Dt-vvu" id="2Uk-zW-bNL"/>
                 <outlet property="scrollView" destination="49y-zY-auP" id="c5k-3W-Jsc"/>
+                <outlet property="txt1" destination="ADa-o5-BO5" id="WBi-bz-njO"/>
+                <outlet property="txt2" destination="ZYQ-5g-KcN" id="rf2-kP-bDO"/>
+                <outlet property="txt3" destination="LTA-QJ-H3U" id="p32-x8-x2m"/>
+                <outlet property="txt4" destination="JbI-gx-5Cy" id="BOC-Re-k9t"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,7 +42,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="373" height="661"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Bienvenidos a LOAKAN" selectable="NO" id="vl0-iP-Zaf">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Bienvenidos a LOAKAN" selectable="NO" id="vl0-iP-Zaf" userLabel="label_1">
                             <rect key="frame" x="8" y="8" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,7 +50,7 @@
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="ADa-o5-BO5">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="ADa-o5-BO5" userLabel="text_1">
                             <rect key="frame" x="8" y="45" width="304" height="128"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,7 +60,7 @@ Solo tienes que seleccionar una ciudad y se mostrarán los mercadillos más cono
                             <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aviso Legal" selectable="NO" id="Hgo-D2-2S1">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Aviso Legal" selectable="NO" id="Hgo-D2-2S1" userLabel="label_2">
                             <rect key="frame" x="8" y="181" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +68,7 @@ Solo tienes que seleccionar una ciudad y se mostrarán los mercadillos más cono
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="ZYQ-5g-KcN">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="ZYQ-5g-KcN" userLabel="text_2">
                             <rect key="frame" x="8" y="217" width="304" height="169"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,7 +79,7 @@ LOAKAN declina expresamente cualquier responsabilidad por error u omisión en la
                             <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Imágenes &amp; Iconos" selectable="NO" id="LNj-Ny-ihO">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Imágenes &amp; Iconos" selectable="NO" id="LNj-Ny-ihO" userLabel="label_3">
                             <rect key="frame" x="8" y="394" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -78,8 +87,8 @@ LOAKAN declina expresamente cualquier responsabilidad por error u omisión en la
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="LTA-QJ-H3U">
-                            <rect key="frame" x="8" y="431" width="304" height="85"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="LTA-QJ-H3U" userLabel="text_3">
+                            <rect key="frame" x="8" y="430" width="304" height="91"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <string key="text">Las imágenes usadas son de libre derecho o nos las han proporcionado los mercadillos. 
@@ -88,16 +97,16 @@ El logo y los iconos utilizados han sido diseñados por Laura Iglesias.</string>
                             <fontDescription key="fontDescription" name="CaviarDreams" family="Caviar Dreams" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Contacto" selectable="NO" id="n3i-Dt-vvu">
-                            <rect key="frame" x="8" y="524" width="304" height="37"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Contacto" selectable="NO" id="n3i-Dt-vvu" userLabel="label_4">
+                            <rect key="frame" x="8" y="528" width="304" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="JbI-gx-5Cy">
-                            <rect key="frame" x="8" y="561" width="304" height="90"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="JbI-gx-5Cy" userLabel="text_4">
+                            <rect key="frame" x="8" y="564" width="304" height="90"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <string key="text">Por favor, para cualquier información adicional, sugerencia o propuesta póngase en contacto con:

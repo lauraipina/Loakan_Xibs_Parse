@@ -18,7 +18,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Nuevo Mercadillo";
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            self.title = @"Nuevo Mercadillo";
+        } else {
+            self.title = @"New Flea Market";
+        }
     }
     return self;
 }
@@ -99,9 +104,13 @@
             {
                 
                 [emailcontroller setSubject:@"Nuevo Mercadillo"];
-                
-                NSString *body = [NSString stringWithFormat:@"Me gustaría que añadierais un nuevo mercadillo, cuyo nombre es <b>%@</b>, se realiza en <b>%@</b> y su web o red social es <b>%@</b>.\n Muchas gracias! ", self.nameMarketTextView.text, self.cityMarketTextView.text, self.webTextView.text];
-                
+                NSString *body;
+                NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+                if([language isEqualToString:@"es"]) {
+                    body = [NSString stringWithFormat:@"Me gustaría que añadierais un nuevo mercadillo, cuyo nombre es <b>%@</b>, se realiza en <b>%@</b> y su web o red social es <b>%@</b>.\n Muchas gracias! ", self.nameMarketTextView.text, self.cityMarketTextView.text, self.webTextView.text];
+                } else {
+                    body = [NSString stringWithFormat:@"I would like to add a new market, whose name is <b>%@</b>, takes place in <b>%@</b> and your website or social network is <b>%@</b>.\n Thank you! ", self.nameMarketTextView.text, self.cityMarketTextView.text, self.webTextView.text];
+                }
                 [emailcontroller setMessageBody:body isHTML:YES];
                 
                 [emailcontroller setToRecipients:@[@"loakan_app@gmail.com"]];

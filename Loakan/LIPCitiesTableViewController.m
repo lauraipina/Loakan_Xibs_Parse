@@ -44,7 +44,12 @@
         self.textKey = @"name";
         
         // The title for this table in the Navigation Controller.
-        self.title = @"Ciudades";
+        if([language isEqualToString:@"es"]) {
+            self.title = @"Ciudades";
+        } else {
+            self.title = @"Cities";
+        }
+
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -411,8 +416,12 @@
         //Si no hay mercados, muestro un mensaje "Proximamente" temporal
         CGPoint location;
         UILabel *lblComingSoon = [[UILabel alloc] init];
-        
-        lblComingSoon.text = @"   Próximamente";
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            lblComingSoon.text = @"   Próximamente";
+        } else {
+            lblComingSoon.text = @"   Coming Soon";
+        }
         lblComingSoon.backgroundColor = [UIColor colorWithRed:250.0/255.0
                                                         green:250.0/255.0
                                                          blue:250.0/255.0

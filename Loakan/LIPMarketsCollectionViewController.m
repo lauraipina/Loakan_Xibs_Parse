@@ -125,11 +125,21 @@
     
     if(self.isDisplayFavorite == YES){
         //Si venimos desde el Botón Favoritos de la tabla de ciudades
-        self.title = @"Mis Favoritos";
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            self.title = @"Mis Favoritos";
+        } else{
+            self.title = @"My Favorites";
+        }
         
     }else{
         //Si venimos desde una ciudad de la tabla
-        self.title = @"Mercadillos";
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if([language isEqualToString:@"es"]) {
+            self.title = @"Mercadillos";
+        }else{
+            self.title = @"Flea Markets";
+        }
         
         // *** BOTON FORMULARIO
         // Crear un botón, con un target y un action en la parte DERECHA
@@ -165,12 +175,12 @@
     
     if(self.isDisplayFavorite == YES){
         //Si venimos desde el Botón Favoritos de la tabla de ciudades
-        self.title = @"Mis Favoritos";
+        //self.title = @"Mis Favoritos";
         [query whereKey:@"name" containedIn:self.favoriteMarkets];
         
     }else{
         //Si venimos desde una ciudad de la tabla
-        self.title = @"Mercadillos";
+        //self.title = @"Mercadillos";
         [query whereKey:@"city" equalTo:self.city];
     }
     
@@ -307,11 +317,21 @@
     // Obtenemos el nombre del mercado seleccionado
     NSString *nameMarket = [marketSelected objectForKey:@"name"];
     NSString *textSocial;
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
     // Asignamos un texto para compartir
     if (nameMarket != nil) {
-        textSocial = [NSString stringWithFormat:@"Descubriendo %@ desde la app LOAKAN", [nameMarket capitalizedString]];
+        
+        if([language isEqualToString:@"es"]) {
+            textSocial = [NSString stringWithFormat:@"Descubriendo %@ desde la app LOAKAN", [nameMarket capitalizedString]];
+        } else {
+            textSocial = [NSString stringWithFormat:@"Discovering %@ from the app Loakan", [nameMarket capitalizedString]];
+        }
     } else {
-        textSocial = @"Descubriendo mercadillos y pop-up stores con la app LOAKAN";
+        if([language isEqualToString:@"es"]) {
+            textSocial = @"Descubriendo mercadillos y pop-up stores con la app LOAKAN";
+        } else {
+            textSocial = @"Discovering Flea Markets and Pop-up Stores with the app Loakan";
+        }
     }
     
     // Obtenemos la url
@@ -426,8 +446,13 @@
         {
             // Email Subject
             NSString *emailTitle = nameMarket;
+            NSString *messageBody;
             // Email Content
-            NSString *messageBody = @"He encontrado este mercadillo en la aplicación LOAKAN y me apetece ir. ¿Vamos juntos?";
+            if([language isEqualToString:@"es"]) {
+                messageBody = @"He encontrado este mercadillo en la aplicación LOAKAN y me apetece ir. ¿Vamos juntos?";
+            } else {
+                messageBody = @"I found this market with the app Loakan and I want to go. Are we together?";
+            }
             // To address
             //NSArray *toRecipents = [NSArray arrayWithObject:@"support@support.com"];
             
@@ -478,7 +503,12 @@
     CGPoint location;
     UILabel *lblComingSoon = [[UILabel alloc] init];
     
-    lblComingSoon.text = @"  Problemas de conexión...";
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if([language isEqualToString:@"es"]) {
+        lblComingSoon.text = @"  Problemas de conexión...";
+    } else {
+        lblComingSoon.text = @"  Problems connecting...";
+    }
     lblComingSoon.backgroundColor = [UIColor colorWithRed:250.0/255.0
                                                     green:250.0/255.0
                                                      blue:250.0/255.0
