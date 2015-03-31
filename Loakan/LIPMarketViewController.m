@@ -101,7 +101,23 @@
                                                                           alpha:1]];
     self.navigationItem.backBarButtonItem.title = @"";
 
+    // Se suscribe a su propia notificacion
+    /*
+    NSNotificationCenter *defCenter = [NSNotificationCenter defaultCenter];
+    [defCenter addObserver:self selector:@selector(notifyThatMarketDidToggleFavorite:) name:NOTIF_NAME_MARKET_TOGGLE_FAVORITE object:nil];
+    */
+   
+    
 }
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    // Se da de baja de su propia notificacion
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -119,10 +135,14 @@
     } else {
         [self.favoritesVC removeFavoriteMarket:nameMarket];
     }
-    
-    
+
     // Modificar el boton Favorito
     [self updateFavoriteButtonState];
+    
+    // Creamos Notificación para que resto Controladores (que estén suscritos)
+    // se enteren del cambio
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotificationName:NOTIF_MARKET_FAVORITE object:self];
     
 }
 
@@ -190,36 +210,11 @@
 
 - (void) popBack:(id)sender
 {
-    
-    /*if(self.isDisplayFavorite == YES){
-        
-        //Recargar porque pueden haber cambiado los favoritos
-        
-        NSLog(@"Favoritos en MarketVC en popBack %@", self.favoriteMarkets);
-        
-        NSString *nameTable;
-        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-        if([language isEqualToString:@"es"]) {
-            nameTable = @"Mercados";
-        } else {
-            nameTable = @"Markets";
-        }
-        
-        LIPMarketsCollectionViewController *collectionView = [[LIPMarketsCollectionViewController alloc] initWithClassName:nameTable arrayFavorites:self.favoriteMarkets];
-        
-        collectionView.isDisplayFavorite = YES;
-        
-        PFQuery *query = [PFQuery queryWithClassName:nameTable];
-        [query whereKey:@"name" containedIn:self.favoriteMarkets];
-     
-    }*/
-        
     [self.navigationController popViewControllerAnimated:YES];
-    
-    
 }
 
 - (void)updateFavoriteButtonState {
+    
     if (self.favorite) {
         // Cambiar el icono a ACTIVADO
         UIImage *buttonImage = [UIImage imageNamed:@"IconFavoriteActive"];
@@ -232,6 +227,8 @@
     }
     
 }
+
+#pragma mark - Notifications
 
 
 @end

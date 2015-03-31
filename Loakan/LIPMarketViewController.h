@@ -13,6 +13,8 @@
 
 @class LIPMarketParse;
 
+#define NOTIF_MARKET_FAVORITE @"marketFavorite"
+
 @interface LIPMarketViewController : UIViewController
 
 @property (strong, nonatomic) LIPMarketParse *marketParse;

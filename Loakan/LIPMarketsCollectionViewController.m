@@ -22,6 +22,7 @@
 @interface LIPMarketsCollectionViewController () <UIGestureRecognizerDelegate, GHContextOverlayViewDataSource, GHContextOverlayViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (strong, nonatomic) LIPFavoritesViewController *favoritesVC;
+@property (strong, nonatomic) NSUserDefaults *defaults;
 
 @end
 
@@ -83,8 +84,6 @@
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:overlay action:@selector(longPressDetected:)];
     
     [self.collectionView addGestureRecognizer:longPressRecognizer];
-    
-    
 }
 
 - (void)viewWillLayoutSubviews {
@@ -165,6 +164,34 @@
     backBtn.frame = CGRectMake(0, 0, 18, 20);
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
     self.navigationItem.leftBarButtonItem = backButton;
+    
+    // Se suscribe a la notificación que el Mercadillo envia cuando se cambia el estado de Favorito
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self
+               selector:@selector(refreshFavoriteMarkets:)
+                   name:NOTIF_MARKET_FAVORITE
+                 object:nil];
+}
+
+- (void)refreshFavoriteMarkets:(NSNotification *)notification
+{
+    NSLog(@"Se ha disparado la notificación!");
+    
+    // Recarga CollectionView
+    if(self.favoriteMarkets != nil){
+        [self queryForCollection];
+    }
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    
+    [super viewDidDisappear:animated];
+    
+    // Dar de baja la notificación
+    // quitame de todas las listas de spam (de las notificaciones que tenga)
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Parse Data
@@ -568,5 +595,34 @@
     [self loadObjects];
 }
 
+#pragma mark - Notifications
+/*
+- (void) notifyThatMarketDidToggleFavorite: (NSNotification *) notification{
+    // Get the book
+    NSDictionary *dict = [notification userInfo];
+    NSLog(@"Notificacion CV %@", dict);
+    //LIPMarketParse *market = [dict objectForKey:NOTIF_KEY_MARKET_FAVORITE];
+    //NSMutableArray *favorites = [[self.defaults arrayForKey:@"favorites"] mutableCopy];
+    //NSLog(@"Notificacion CV favorites %@", favorites);
+    
+    // Check favorite status and add/remove it from favorites
+    if (market.isFavorite) {
+        if (![self.favoriteMarkets containsObject:market]) {
+            [favorites addObject:market];
+            [self.defaults setObject:favorites forKey:@"favorites"];
+        }
+    }
+    else{
+        if ([self.favoriteMarkets containsObject:market]) {
+            [favorites removeObject:market];
+            [self.defaults setObject:favorites forKey:@"favorites"];
+        }
+    }
+    
+    // Reload CollectionView
+    //[self.tableView reloadData];
+    [self loadObjects];
+}
+*/
 
 @end
