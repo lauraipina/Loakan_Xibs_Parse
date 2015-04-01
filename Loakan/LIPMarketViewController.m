@@ -100,24 +100,14 @@
                                                                            blue:250.0/255
                                                                           alpha:1]];
     self.navigationItem.backBarButtonItem.title = @"";
-
-    // Se suscribe a su propia notificacion
-    /*
-    NSNotificationCenter *defCenter = [NSNotificationCenter defaultCenter];
-    [defCenter addObserver:self selector:@selector(notifyThatMarketDidToggleFavorite:) name:NOTIF_NAME_MARKET_TOGGLE_FAVORITE object:nil];
-    */
-   
     
 }
 
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    
+-(void) dealloc {
     // Se da de baja de su propia notificacion
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -130,6 +120,7 @@
     
     NSString *nameMarket = self.marketParse.name;
     self.favorite = ![self isFavorite];
+
     if (self.favorite) {
         [self.favoritesVC addFavoriteMarket:nameMarket];
     } else {
@@ -138,12 +129,7 @@
 
     // Modificar el boton Favorito
     [self updateFavoriteButtonState];
-    
-    // Creamos Notificación para que resto Controladores (que estén suscritos)
-    // se enteren del cambio
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotificationName:NOTIF_MARKET_FAVORITE object:self];
-    
+
 }
 
 - (IBAction)displayWeb:(id)sender {
@@ -210,7 +196,15 @@
 
 - (void) popBack:(id)sender
 {
+    
+    // Creamos Notificación para que resto Controladores (que estén suscritos)
+    // se enteren del cambio
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    // Se envia Notificación
+    [center postNotificationName:NOTIF_MARKET_FAVORITE object:self];
+    
     [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)updateFavoriteButtonState {
@@ -227,8 +221,6 @@
     }
     
 }
-
-#pragma mark - Notifications
 
 
 @end
