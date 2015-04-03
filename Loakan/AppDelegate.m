@@ -51,29 +51,25 @@
     PFObject *miMercado = [PFObject objectWithClassName:@"Mercados"];
     PFObject *myMarket = [PFObject objectWithClassName:@"Markets"];
     
-    NSString *name = @"Mercat dels Encants";
-    NSString *web = @"http://www.encantsbcn.com/es-es/inicio.aspx#&panel1-1";
-    NSString *face = @"https://www.facebook.com/EncantsBarcelona?ref=ts";
-    NSString *tw = @"https://twitter.com/EncantsBCN";
-    //NSString *insta = @"https://instagram.com/ravemarket/";
-    NSString *dire = @"Calle Castillejos, 158, 08013 Barcelona";
+    NSString *name = @"Va de maletas";
+    //NSString *web = @"http://welovecatsmarket-esp.blogspot.com.es";
+    NSString *face = @"https://www.facebook.com/vademaletas";
+    //NSString *tw = @"https://twitter.com/welovecatsmarkt";
+    //NSString *insta = @"https://instagram.com/blbcn/";
+    NSString *dire = @"Carrer Pintor Fortuny, 25, Barcelona";
 
 
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:41.401833 longitude:2.185901];
-    NSString *city = @"Barcelona";
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:41.382789 longitude:2.169370];
+    NSString *city = @"Ibiza";
     
     
-
-
-
-
     
     [miMercado setObject:name forKey:@"name"];
-    [miMercado setObject:@"Es uno de los mercados más antiguos de Europa. Desde el siglo XIV es un ejemplo del dinamismo comercial de Barcelona." forKey:@"info"];
-    [miMercado setObject:@"Lunes, Miércoles, Viernes y Sábados, De 9:00h a 20:00h" forKey:@"timetable"];
-    [miMercado setObject:web forKey:@"web"];
+    [miMercado setObject:@"Es un mercadillo que posee un concepto diferenciador: todo lo que lleves para vender allí debe caberte en una maleta." forKey:@"info"];
+    [miMercado setObject:@"Variable. 11h-21h" forKey:@"timetable"];
+    //[miMercado setObject:web forKey:@"web"];
     [miMercado setObject:face forKey:@"facebook"];
-    [miMercado setObject:tw forKey:@"twitter"];
+    //[miMercado setObject:tw forKey:@"twitter"];
     //[miMercado setObject:insta forKey:@"instagram"];
     [miMercado setObject:dire forKey:@"address"];
     [miMercado setObject:city forKey:@"city"];
@@ -81,11 +77,11 @@
 
     
      [myMarket setObject:name forKey:@"name"];
-     [myMarket setObject:@"It is one of the oldest markets in Europe. From the fourteenth century is an example of the commercial dynamism of Barcelona." forKey:@"info"];
-     [myMarket setObject:@"Monday, Wednesday, Friday and Saturday, from 9: 00h to 20: 00h" forKey:@"timetable"];
-     [myMarket setObject:web forKey:@"web"];
+     [myMarket setObject:@"It is a market that has a differentiating concept: all you bring to sell there, should fit you in a suitcase." forKey:@"info"];
+     [myMarket setObject:@"Variable. 11h-21h" forKey:@"timetable"];
+     //[myMarket setObject:web forKey:@"web"];
      [myMarket setObject:face forKey:@"facebook"];
-     [myMarket setObject:tw forKey:@"twitter"];
+     //[myMarket setObject:tw forKey:@"twitter"];
      //[myMarket setObject:insta forKey:@"instagram"];
      [myMarket setObject:dire forKey:@"address"];
      [myMarket setObject:city forKey:@"city"];
@@ -94,8 +90,8 @@
     
     
     
-     [miMercado save];
-     [myMarket save];
+     //[miMercado save];
+     //[myMarket save];
     
     
     [self.window makeKeyAndVisible];
