@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
+
 @import Parse;
 
 #import "LIPCitiesTableViewController.h"
 #import "LIPTutorialViewController.h"
+
+#define REVMOB_ID @"551eb5df5c0247ed0743f8fe"
 
 #define APPLICATION_ID 	@"7QqqkqS9Y4UCQW6xuHNXxbDSV7V4F1V7Lvfz7aTj"
 #define CLIENT_KEY 		@"9NVLTMN6rxYxsRDjEvJye1op0nm5mNY7dHOUvFUa"
@@ -29,6 +32,9 @@
     //Antes de nada, cambiamos el aspecto
     [self customizeAppearance];
     
+    // *** REVMOB
+    [RevMobAds startSessionWithAppID:REVMOB_ID andDelegate:self];
+    
     // *** PARSE
     // Registra la aplicación con nuestra app registrada en Parse
     [Parse setApplicationId:APPLICATION_ID clientKey:CLIENT_KEY];
@@ -45,14 +51,16 @@
     PFObject *miMercado = [PFObject objectWithClassName:@"Mercados"];
     PFObject *myMarket = [PFObject objectWithClassName:@"Markets"];
     
-    NSString *name = @"Mercado Ranas";
-    NSString *web = @"http://www.barrioletras.com/lang/es/195-el-mercado-de-las-ranas";
-    NSString *face = @"https://www.facebook.com/mercadodelasranas";
-    NSString *tw = @"";
-    NSString *insta = @"";
-    NSString *dire = @"Barrio de las Letras, Madrid";
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:40.414371 longitude:-3.698402];
-    NSString *city = @"Madrid";
+    NSString *name = @"Mercat dels Encants";
+    NSString *web = @"http://www.encantsbcn.com/es-es/inicio.aspx#&panel1-1";
+    NSString *face = @"https://www.facebook.com/EncantsBarcelona?ref=ts";
+    NSString *tw = @"https://twitter.com/EncantsBCN";
+    //NSString *insta = @"https://instagram.com/ravemarket/";
+    NSString *dire = @"Calle Castillejos, 158, 08013 Barcelona";
+
+
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:41.401833 longitude:2.185901];
+    NSString *city = @"Barcelona";
     
     
 
@@ -61,34 +69,34 @@
 
     
     [miMercado setObject:name forKey:@"name"];
-    [miMercado setObject:@"Se convierte en un zona comercial de referencia, emulando otros mercados mundialmente conocidos en las principales ciudades del mundo." forKey:@"info"];
-    [miMercado setObject:@"Consulta la web." forKey:@"timetable"];
+    [miMercado setObject:@"Es uno de los mercados más antiguos de Europa. Desde el siglo XIV es un ejemplo del dinamismo comercial de Barcelona." forKey:@"info"];
+    [miMercado setObject:@"Lunes, Miércoles, Viernes y Sábados, De 9:00h a 20:00h" forKey:@"timetable"];
     [miMercado setObject:web forKey:@"web"];
     [miMercado setObject:face forKey:@"facebook"];
     [miMercado setObject:tw forKey:@"twitter"];
-    [miMercado setObject:insta forKey:@"instagram"];
+    //[miMercado setObject:insta forKey:@"instagram"];
     [miMercado setObject:dire forKey:@"address"];
     [miMercado setObject:city forKey:@"city"];
     [miMercado setObject:geoPoint forKey:@"location"];
 
     
      [myMarket setObject:name forKey:@"name"];
-     [myMarket setObject:@"It becomes a commercial reference area, emulating other world-known markets in major cities worldwide." forKey:@"info"];
-     [myMarket setObject:@"Variable. Check web." forKey:@"timetable"];
+     [myMarket setObject:@"It is one of the oldest markets in Europe. From the fourteenth century is an example of the commercial dynamism of Barcelona." forKey:@"info"];
+     [myMarket setObject:@"Monday, Wednesday, Friday and Saturday, from 9: 00h to 20: 00h" forKey:@"timetable"];
      [myMarket setObject:web forKey:@"web"];
      [myMarket setObject:face forKey:@"facebook"];
      [myMarket setObject:tw forKey:@"twitter"];
-     [myMarket setObject:insta forKey:@"instagram"];
+     //[myMarket setObject:insta forKey:@"instagram"];
      [myMarket setObject:dire forKey:@"address"];
      [myMarket setObject:city forKey:@"city"];
      [myMarket setObject:geoPoint forKey:@"location"];
     
     
     
-    /*
+    
      [miMercado save];
      [myMarket save];
-    */
+    
     
     [self.window makeKeyAndVisible];
     
@@ -116,6 +124,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - REVMOB
+-(void)revmobSessionIsStarted {
+    NSLog(@"[RevMob Sample App] Session is started.");
+}
+
+- (void)revmobSessionNotStartedWithError:(NSError *)error {
+    NSLog(@"[RevMob Sample App] Session failed to start: %@", error);
+}
+
+- (void)revmobAdDidFailWithError:(NSError *)error {
+}
+
 
 #pragma mark - Utils
 

@@ -7,8 +7,10 @@
 //
 
 @import UIKit;
+#import <RevMobAds/RevMobAds.h>
+#import <RevMobAds/RevMobAdsDelegate.h>
 
-@interface LIPWebViewController : UIViewController <UIWebViewDelegate>
+@interface LIPWebViewController : UIViewController <UIWebViewDelegate, RevMobAdsDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIWebView *browser;

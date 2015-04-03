@@ -105,6 +105,10 @@
 		006055661AA9E73E00F069E3 /* img_mcd.png in Resources */ = {isa = PBXBuildFile; fileRef = 006055641AA9E73E00F069E3 /* img_mcd.png */; };
 		0060556B1AA9EDA800F069E3 /* img_camdem.png in Resources */ = {isa = PBXBuildFile; fileRef = 006055691AA9EDA800F069E3 /* img_camdem.png */; };
 		0060556E1AA9F0AC00F069E3 /* img_lost.png in Resources */ = {isa = PBXBuildFile; fileRef = 0060556D1AA9F0AC00F069E3 /* img_lost.png */; };
+		007189501ACEF09900B4D672 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0071894F1ACEF09900B4D672 /* SystemConfiguration.framework */; };
+		007189521ACEF0A600B4D672 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007189511ACEF0A600B4D672 /* StoreKit.framework */; };
+		007189541ACEF0B800B4D672 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007189531ACEF0B800B4D672 /* AdSupport.framework */; };
+		007189561ACEF5C600B4D672 /* RevMobAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007189551ACEF5C600B4D672 /* RevMobAds.framework */; };
 		0078ED5F1ABA014900BD5A39 /* LIPMarketParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0078ED5E1ABA014900BD5A39 /* LIPMarketParse.m */; };
 		0081861D1AC9A07B00C3A9BF /* Tutorial_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0081861B1AC9A07B00C3A9BF /* Tutorial_1.png */; };
 		0081861E1AC9A07B00C3A9BF /* Tutorial_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0081861C1AC9A07B00C3A9BF /* Tutorial_1@2x.png */; };
@@ -257,6 +261,10 @@
 		006055641AA9E73E00F069E3 /* img_mcd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_mcd.png; sourceTree = "<group>"; };
 		006055691AA9EDA800F069E3 /* img_camdem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_camdem.png; sourceTree = "<group>"; };
 		0060556D1AA9F0AC00F069E3 /* img_lost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_lost.png; sourceTree = "<group>"; };
+		0071894F1ACEF09900B4D672 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		007189511ACEF0A600B4D672 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		007189531ACEF0B800B4D672 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		007189551ACEF5C600B4D672 /* RevMobAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevMobAds.framework; sourceTree = "<group>"; };
 		0078ED5D1ABA014900BD5A39 /* LIPMarketParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPMarketParse.h; sourceTree = "<group>"; };
 		0078ED5E1ABA014900BD5A39 /* LIPMarketParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPMarketParse.m; sourceTree = "<group>"; };
 		0081861B1AC9A07B00C3A9BF /* Tutorial_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_1.png; sourceTree = "<group>"; };
@@ -290,6 +298,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007189541ACEF0B800B4D672 /* AdSupport.framework in Frameworks */,
+				007189561ACEF5C600B4D672 /* RevMobAds.framework in Frameworks */,
+				007189521ACEF0A600B4D672 /* StoreKit.framework in Frameworks */,
+				007189501ACEF09900B4D672 /* SystemConfiguration.framework in Frameworks */,
 				00D53F0D1AACB7D20035963E /* MessageUI.framework in Frameworks */,
 				005CBE121AA77D7C0038DE61 /* MapKit.framework in Frameworks */,
 				7A68643BC9F49F0418450246 /* libPods.a in Frameworks */,
@@ -564,6 +576,7 @@
 		005CBE171AA77EA70038DE61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007189551ACEF5C600B4D672 /* RevMobAds.framework */,
 				00D53F0C1AACB7D20035963E /* MessageUI.framework */,
 				005CBE111AA77D7C0038DE61 /* MapKit.framework */,
 			);
@@ -625,6 +638,9 @@
 		63C33CF15661A44D1E1A1537 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007189531ACEF0B800B4D672 /* AdSupport.framework */,
+				007189511ACEF0A600B4D672 /* StoreKit.framework */,
+				0071894F1ACEF09900B4D672 /* SystemConfiguration.framework */,
 				1369A26307F61C68F69088DA /* libPods.a */,
 			);
 			name = Frameworks;
@@ -994,6 +1010,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Loakan",
+				);
 				INFOPLIST_FILE = Loakan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1006,6 +1026,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Loakan",
+				);
 				INFOPLIST_FILE = Loakan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

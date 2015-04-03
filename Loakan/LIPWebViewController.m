@@ -12,6 +12,7 @@
 
 @end
 
+
 @implementation LIPWebViewController
 
 -(id) initWithUrl: (NSURL *) aTypeWeb
@@ -32,7 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    // Se crea Banner en RevMob
+    [[RevMobAds session] showBanner];
 }
 
 //Sirve para mantener sincronizados modelo y vista
@@ -88,8 +91,64 @@
 
 - (void) popBack:(id)sender
 {
+    // Se elimina Banner en RevMob
+    [[RevMobAds session] hideBanner];
+    
     // do your custom handler code here
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Methods to test RevMob Ads
+
+- (void)fillUserInfo
+{
+    RevMobAds *revmob = [RevMobAds session];
+    
+    revmob.userGender = RevMobUserGenderFemale;
+    revmob.userAgeRangeMin = 16;
+    revmob.userAgeRangeMax = 60;
+    revmob.userBirthday = [NSDate dateWithTimeIntervalSince1970:0];
+    revmob.userPage = @"twitter.com/revmob";
+    revmob.userInterests = @[@"mobile", @"iPhone", @"apps", @"girl", @"market", @"shop", @"diy", @"flea"];
+    
+}
+
+#pragma mark - RevMobAdsDelegate methods
+
+- (void)revmobSessionIsStarted {
+    NSLog(@"[RevMob Sample App] Session started again.");
+}
+
+- (void)revmobSessionNotStarted:(NSError *)error {
+    NSLog(@"[RevMob Sample App] Session not started again: %@", error);
+}
+
+- (void)revmobAdDidReceive {
+    NSLog(@"[RevMob Sample App] Ad loaded.");
+}
+
+- (void)revmobAdDidFailWithError:(NSError *)error {
+    NSLog(@"[RevMob Sample App] Ad failed: %@", error);
+}
+
+- (void)revmobAdDisplayed {
+    NSLog(@"[RevMob Sample App] Ad displayed.");
+}
+
+- (void)revmobUserClosedTheAd {
+    NSLog(@"[RevMob Sample App] User clicked in the close button.");
+}
+
+- (void)revmobUserClickedInTheAd {
+    NSLog(@"[RevMob Sample App] User clicked in the Ad.");
+}
+
+- (void)installDidReceive {
+    NSLog(@"[RevMob Sample App] Install did receive.");
+}
+
+- (void)installDidFail {
+    NSLog(@"[RevMob Sample App] Install did fail.");
 }
 
 @end

@@ -240,10 +240,10 @@
     
     cell.imageView.file = object[@"photo"];
     // Si la imagen no se carga, cargar una por defecto
+    [cell.imageView loadInBackground];
     if (cell.imageView.image == nil) {
         cell.imageView.image = [UIImage imageNamed:@"ImgNoDisponible"];
     }
-    [cell.imageView loadInBackground];
     
     cell.contentView.layer.borderWidth = 5.0f;
     cell.contentView.layer.borderColor = [UIColor colorWithRed:133.0/255

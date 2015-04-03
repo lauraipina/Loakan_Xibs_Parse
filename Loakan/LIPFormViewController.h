@@ -7,6 +7,8 @@
 //
 @import UIKit;
 @import MessageUI;
+#import <RevMobAds/RevMobAds.h>
+#import <RevMobAds/RevMobAdsDelegate.h>
 
 @interface LIPFormViewController : UIViewController <MFMailComposeViewControllerDelegate>
 

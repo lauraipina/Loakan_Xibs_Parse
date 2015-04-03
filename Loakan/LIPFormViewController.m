@@ -49,6 +49,9 @@
     
     self.scrollView.contentSize = CGSizeMake(320, 600);
     
+    // Se crea Fullscreen en RevMob
+    [[RevMobAds session] showFullscreen];
+    
 }
 
 - (void)didReceiveMemoryWarning {

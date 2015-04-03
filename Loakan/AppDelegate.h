@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RevMobAds/RevMobAds.h>
+#import <RevMobAds/RevMobAdsDelegate.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RevMobAdsDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
