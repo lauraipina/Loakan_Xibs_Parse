@@ -402,8 +402,7 @@
     NSString *city = [citySelected objectForKey:@"name"];
     
     // Averiguar cual es la ciudad
-    if([city isEqualToString:@"Ibiza"] ||
-       [city isEqualToString:@"Berlin"] ||
+    if([city isEqualToString:@"Berlin"] ||
        [city isEqualToString:@"Amsterdam"] ||
        [city isEqualToString:@"Paris"] ||
        [city isEqualToString:@"Nueva York"] ||

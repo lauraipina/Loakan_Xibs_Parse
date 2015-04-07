@@ -69,10 +69,10 @@
         self.lbl3.text = @"Imágenes & Iconos";
         self.lbl4.text = @"Contacto";
     
-        self.txt1.text = @"El objetivo de Loakan es proporcionar una guía de mercadillos de ropa de 2ª mano o artesaneles y pop-up stores a nivel mundial de una forma sencilla y rápida.\n\n Solo tienes que seleccionar una ciudad y se mostrarán los mercadillos más conocidos en ella. ";
-        self.txt2.text = @"La información recogida en esta aplicación se ha obtenido de fuentes fiables, pero LOAKAN no garantiza que sea exacta, completa o actualizada. Para ello, es mejor consultar las webs oficiales de los mercadillos.\n\n LOAKAN declina expresamente cualquier responsabilidad por error u omisión en la información contenida.";
-        self.txt3.text = @"Las imágenes usadas son de libre derecho o nos las han proporcionado los mercadillos.\n\n El logo y los iconos utilizados han sido diseñados por Laura Iglesias.";
-        self.txt4.text = @"Por favor, para cualquier información adicional, sugerencia o propuesta póngase en contacto con:\n\n loakan_app@gmail.com";
+        self.txt1.text = @" El objetivo de Loakan es proporcionar una guía de ferías y mercadillos de nuevos diseñadores, ropa de 2ª mano o artesaneles y pop-up stores a nivel mundial de una forma sencilla y rápida.\n\n Solo tienes que seleccionar una ciudad y se mostrarán los mercadillos más conocidos en ella. ";
+        self.txt2.text = @" La información recogida en esta aplicación se ha obtenido de fuentes fiables, pero LOAKAN no garantiza que sea exacta, completa o actualizada. Para ello, es mejor consultar las webs oficiales de los mercadillos.\n\n LOAKAN declina expresamente cualquier responsabilidad por error u omisión en la información contenida.";
+        self.txt3.text = @" Las imágenes usadas son de libre derecho o nos las han proporcionado los mercadillos.\n\n El logo y los iconos utilizados han sido diseñados por la desarrolladora de la app.";
+        self.txt4.text = @" Por favor, para cualquier información adicional, sugerencia o propuesta póngase en contacto con: apploakan@gmail.com";
         
     } else {
         
@@ -83,19 +83,27 @@
         
         self.txt1.text = @"The objective of Loakan is to provide a guide to Markets 2nd hand clothing or artesaneles and pop-up stores worldwide simply and quickly.\n\n Just select a city and the most famous markets it is displayed.";
         self.txt2.text = @"The information contained in this application has been obtained from reliable sources, but Loakan not guaranteed to be accurate, complete or current. For this it is best to consult the official sites of the markets.\n\n Loakan expressly disclaims any responsibility for errors or omissions in the information.";
-        self.txt3.text = @"Images used are free standing or we have provided the markets.\n\n The logo and icons used are designed by Laura Iglesias.";
-        self.txt4.text = @"Please, for any additional information, suggestion or proposal, please contact:\n\nloakan_app@gmail.com";
+        self.txt3.text = @"Images used are free standing or we have provided the markets.\n\n The logo and icons used are designed by the app´s developer.";
+        self.txt4.text = @"Please, for any additional information, suggestion or proposal, please contact: apploakan@gmail.com";
     }
     
-    self.lbl1.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
-    self.lbl2.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
-    self.lbl3.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
-    self.lbl4.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
+    self.lbl1.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+    self.lbl1.textColor = [UIColor grayColor];
+    self.lbl2.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+    self.lbl2.textColor = [UIColor grayColor];
+    self.lbl3.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+    self.lbl3.textColor = [UIColor grayColor];
+    self.lbl4.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:18];
+    self.lbl4.textColor = [UIColor grayColor];
     
     self.txt1.font = [UIFont fontWithName:@"Caviar Dreams" size:13];
+    self.txt1.textColor = [UIColor grayColor];
     self.txt2.font = [UIFont fontWithName:@"Caviar Dreams" size:13];
+    self.txt2.textColor = [UIColor grayColor];
     self.txt3.font = [UIFont fontWithName:@"Caviar Dreams" size:13];
+    self.txt3.textColor = [UIColor grayColor];
     self.txt4.font = [UIFont fontWithName:@"Caviar Dreams" size:13];
+    self.txt4.textColor = [UIColor grayColor];
     
 }
 

@@ -116,7 +116,7 @@
                 }
                 [emailcontroller setMessageBody:body isHTML:YES];
                 
-                [emailcontroller setToRecipients:@[@"loakan_app@gmail.com"]];
+                [emailcontroller setToRecipients:@[@"apploakan@gmail.com"]];
                 
                 emailcontroller.mailComposeDelegate = self;
                 

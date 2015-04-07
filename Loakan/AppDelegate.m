@@ -51,23 +51,23 @@
     PFObject *miMercado = [PFObject objectWithClassName:@"Mercados"];
     PFObject *myMarket = [PFObject objectWithClassName:@"Markets"];
     
-    NSString *name = @"Va de maletas";
-    //NSString *web = @"http://welovecatsmarket-esp.blogspot.com.es";
-    NSString *face = @"https://www.facebook.com/vademaletas";
-    //NSString *tw = @"https://twitter.com/welovecatsmarkt";
-    //NSString *insta = @"https://instagram.com/blbcn/";
-    NSString *dire = @"Carrer Pintor Fortuny, 25, Barcelona";
+    NSString *name = @"Cool Craft Market";
+    NSString *web = @"http://www.coolcraftmarket.com";
+    NSString *face = @"https://www.facebook.com/AlicanteCraft";
+    //NSString *tw = @"https://twitter.com/LaFireta";
+    //NSString *insta = @"https://instagram.com/corner_label/";
+    NSString *dire = @"C/ San Carlos, 78. Alicante";
+    
 
-
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:41.382789 longitude:2.169370];
-    NSString *city = @"Ibiza";
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:38.353447 longitude:-0.481605];
+    NSString *city = @"Alicante";
     
     
     
     [miMercado setObject:name forKey:@"name"];
-    [miMercado setObject:@"Es un mercadillo que posee un concepto diferenciador: todo lo que lleves para vender allí debe caberte en una maleta." forKey:@"info"];
-    [miMercado setObject:@"Variable. 11h-21h" forKey:@"timetable"];
-    //[miMercado setObject:web forKey:@"web"];
+    [miMercado setObject:@"Concebido como un lugar de promoción para diseñadores, crafters y emprendedores, nace con la idea de servir de plataforma impulsora del arte y el diseño." forKey:@"info"];
+    [miMercado setObject:@"Variable. Consulta web." forKey:@"timetable"];
+    [miMercado setObject:web forKey:@"web"];
     [miMercado setObject:face forKey:@"facebook"];
     //[miMercado setObject:tw forKey:@"twitter"];
     //[miMercado setObject:insta forKey:@"instagram"];
@@ -77,9 +77,9 @@
 
     
      [myMarket setObject:name forKey:@"name"];
-     [myMarket setObject:@"It is a market that has a differentiating concept: all you bring to sell there, should fit you in a suitcase." forKey:@"info"];
-     [myMarket setObject:@"Variable. 11h-21h" forKey:@"timetable"];
-     //[myMarket setObject:web forKey:@"web"];
+     [myMarket setObject:@"Conceived as a place of promotion for designers, crafters and entrepreneurs, born with the idea of serving as a driving platform of art and design." forKey:@"info"];
+     [myMarket setObject:@"Variable. Check web." forKey:@"timetable"];
+     [myMarket setObject:web forKey:@"web"];
      [myMarket setObject:face forKey:@"facebook"];
      //[myMarket setObject:tw forKey:@"twitter"];
      //[myMarket setObject:insta forKey:@"instagram"];
