@@ -20,10 +20,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LIPFormViewController">
             <connections>
+                <outlet property="btnEnviar" destination="Q46-om-7Wr" id="owl-Ef-F7d"/>
+                <outlet property="cityMarketLbl" destination="EOk-XE-Nef" id="d2S-8J-6sN"/>
                 <outlet property="cityMarketTextView" destination="JmN-XC-c0K" id="j9D-hO-aC7"/>
+                <outlet property="nameMarketLbl" destination="XbR-OQ-48o" id="7nP-yx-i4v"/>
                 <outlet property="nameMarketTextView" destination="19K-sB-grC" id="4ck-Y3-mgF"/>
                 <outlet property="scrollView" destination="MaY-uA-K9I" id="f7w-Vj-F8P"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webLbl" destination="5gb-aw-rVj" id="Fya-hG-XOT"/>
                 <outlet property="webTextView" destination="7tb-U7-aY3" id="LGZ-zn-FbG"/>
             </connections>
         </placeholder>
@@ -114,11 +118,11 @@ Rellena el siguiente formulario y lo añadiremos cuanto antes.
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q46-om-7Wr">
                             <rect key="frame" x="45" y="445" width="230" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                            <state key="normal" image="BotonEnviarDesactive.png">
+                            <state key="normal" image="BotonEnviarActive.png">
                                 <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" red="0.77485988449999998" green="0.77485988449999998" blue="0.77485988449999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="highlighted" image="BotonEnviarActive.png">
+                            <state key="highlighted" image="BotonEnviarDesactive.png">
                                 <color key="titleColor" red="0.52156862749999999" green="0.7725490196" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" red="0.52156862749999999" green="0.7725490196" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -134,8 +138,8 @@ Rellena el siguiente formulario y lo añadiremos cuanto antes.
         </view>
     </objects>
     <resources>
-        <image name="BotonEnviarActive.png" width="620" height="97"/>
-        <image name="BotonEnviarDesactive.png" width="620" height="97"/>
+        <image name="BotonEnviarActive.png" width="620" height="100"/>
+        <image name="BotonEnviarDesactive.png" width="620" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

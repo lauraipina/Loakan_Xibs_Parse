@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0026D3A91AD438EB002DC25E /* BotonEnviarActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A51AD438EB002DC25E /* BotonEnviarActive.png */; };
+		0026D3AA1AD438EB002DC25E /* BotonEnviarActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A61AD438EB002DC25E /* BotonEnviarActive@2x.png */; };
+		0026D3AB1AD438EB002DC25E /* BotonEnviarDesactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A71AD438EB002DC25E /* BotonEnviarDesactive.png */; };
+		0026D3AC1AD438EB002DC25E /* BotonEnviarDesactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A81AD438EB002DC25E /* BotonEnviarDesactive@2x.png */; };
 		0058637E1ABF0A9800DA63C4 /* LIPFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */; };
 		005CBCE81AA770420038DE61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCE71AA770420038DE61 /* main.m */; };
 		005CBCEB1AA770420038DE61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCEA1AA770420038DE61 /* AppDelegate.m */; };
@@ -41,14 +45,6 @@
 		005CBDC51AA77BF20038DE61 /* BackActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD7B1AA77BF20038DE61 /* BackActive@2x.png */; };
 		005CBDC61AA77BF20038DE61 /* BackDesactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD7C1AA77BF20038DE61 /* BackDesactive.png */; };
 		005CBDC71AA77BF20038DE61 /* BackDesactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD7D1AA77BF20038DE61 /* BackDesactive@2x.png */; };
-		005CBDC81AA77BF20038DE61 /* BotonEnviarActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD7E1AA77BF20038DE61 /* BotonEnviarActive.png */; };
-		005CBDC91AA77BF20038DE61 /* BotonEnviarActive@1,5x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD7F1AA77BF20038DE61 /* BotonEnviarActive@1,5x.png */; };
-		005CBDCA1AA77BF20038DE61 /* BotonEnviarActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD801AA77BF20038DE61 /* BotonEnviarActive@2x.png */; };
-		005CBDCB1AA77BF20038DE61 /* BotonEnviarActive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD811AA77BF20038DE61 /* BotonEnviarActive@3x.png */; };
-		005CBDCC1AA77BF20038DE61 /* BotonEnviarDesactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD821AA77BF20038DE61 /* BotonEnviarDesactive.png */; };
-		005CBDCD1AA77BF20038DE61 /* BotonEnviarDesactive@1,5x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD831AA77BF20038DE61 /* BotonEnviarDesactive@1,5x.png */; };
-		005CBDCE1AA77BF20038DE61 /* BotonEnviarDesactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD841AA77BF20038DE61 /* BotonEnviarDesactive@2x.png */; };
-		005CBDCF1AA77BF20038DE61 /* BotonEnviarDesactive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD851AA77BF20038DE61 /* BotonEnviarDesactive@3x.png */; };
 		005CBDD01AA77BF20038DE61 /* CaviarDreams_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD861AA77BF20038DE61 /* CaviarDreams_Bold.ttf */; };
 		005CBDD11AA77BF20038DE61 /* CaviarDreams_BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD871AA77BF20038DE61 /* CaviarDreams_BoldItalic.ttf */; };
 		005CBDD21AA77BF20038DE61 /* CaviarDreams_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 005CBD881AA77BF20038DE61 /* CaviarDreams_Italic.ttf */; };
@@ -145,6 +141,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0026D3A51AD438EB002DC25E /* BotonEnviarActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarActive.png; sourceTree = "<group>"; };
+		0026D3A61AD438EB002DC25E /* BotonEnviarActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarActive@2x.png"; sourceTree = "<group>"; };
+		0026D3A71AD438EB002DC25E /* BotonEnviarDesactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarDesactive.png; sourceTree = "<group>"; };
+		0026D3A81AD438EB002DC25E /* BotonEnviarDesactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarDesactive@2x.png"; sourceTree = "<group>"; };
 		0058637C1ABF0A9800DA63C4 /* LIPFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPFavoritesViewController.h; sourceTree = "<group>"; };
 		0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPFavoritesViewController.m; sourceTree = "<group>"; };
 		005CBCE21AA770420038DE61 /* Loakan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loakan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,14 +197,6 @@
 		005CBD7B1AA77BF20038DE61 /* BackActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackActive@2x.png"; sourceTree = "<group>"; };
 		005CBD7C1AA77BF20038DE61 /* BackDesactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackDesactive.png; sourceTree = "<group>"; };
 		005CBD7D1AA77BF20038DE61 /* BackDesactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackDesactive@2x.png"; sourceTree = "<group>"; };
-		005CBD7E1AA77BF20038DE61 /* BotonEnviarActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarActive.png; sourceTree = "<group>"; };
-		005CBD7F1AA77BF20038DE61 /* BotonEnviarActive@1,5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarActive@1,5x.png"; sourceTree = "<group>"; };
-		005CBD801AA77BF20038DE61 /* BotonEnviarActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarActive@2x.png"; sourceTree = "<group>"; };
-		005CBD811AA77BF20038DE61 /* BotonEnviarActive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarActive@3x.png"; sourceTree = "<group>"; };
-		005CBD821AA77BF20038DE61 /* BotonEnviarDesactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarDesactive.png; sourceTree = "<group>"; };
-		005CBD831AA77BF20038DE61 /* BotonEnviarDesactive@1,5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarDesactive@1,5x.png"; sourceTree = "<group>"; };
-		005CBD841AA77BF20038DE61 /* BotonEnviarDesactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarDesactive@2x.png"; sourceTree = "<group>"; };
-		005CBD851AA77BF20038DE61 /* BotonEnviarDesactive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarDesactive@3x.png"; sourceTree = "<group>"; };
 		005CBD861AA77BF20038DE61 /* CaviarDreams_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_Bold.ttf; sourceTree = "<group>"; };
 		005CBD871AA77BF20038DE61 /* CaviarDreams_BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_BoldItalic.ttf; sourceTree = "<group>"; };
 		005CBD881AA77BF20038DE61 /* CaviarDreams_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_Italic.ttf; sourceTree = "<group>"; };
@@ -541,14 +533,10 @@
 		005CBE101AA77CFE0038DE61 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				005CBD7E1AA77BF20038DE61 /* BotonEnviarActive.png */,
-				005CBD7F1AA77BF20038DE61 /* BotonEnviarActive@1,5x.png */,
-				005CBD801AA77BF20038DE61 /* BotonEnviarActive@2x.png */,
-				005CBD811AA77BF20038DE61 /* BotonEnviarActive@3x.png */,
-				005CBD821AA77BF20038DE61 /* BotonEnviarDesactive.png */,
-				005CBD831AA77BF20038DE61 /* BotonEnviarDesactive@1,5x.png */,
-				005CBD841AA77BF20038DE61 /* BotonEnviarDesactive@2x.png */,
-				005CBD851AA77BF20038DE61 /* BotonEnviarDesactive@3x.png */,
+				0026D3A51AD438EB002DC25E /* BotonEnviarActive.png */,
+				0026D3A61AD438EB002DC25E /* BotonEnviarActive@2x.png */,
+				0026D3A71AD438EB002DC25E /* BotonEnviarDesactive.png */,
+				0026D3A81AD438EB002DC25E /* BotonEnviarDesactive@2x.png */,
 				005CBD9C1AA77BF20038DE61 /* LogoFacebook.png */,
 				005CBD9D1AA77BF20038DE61 /* LogoFacebook@2x.png */,
 				005CBD9E1AA77BF20038DE61 /* LogoFacebookActive.png */,
@@ -728,18 +716,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				005CBDCF1AA77BF20038DE61 /* BotonEnviarDesactive@3x.png in Resources */,
 				005CBE021AA77BF20038DE61 /* Tutorial_4.png in Resources */,
 				005CBD4D1AA777460038DE61 /* LIPMarketCollectionViewCell.xib in Resources */,
 				005CBDE11AA77BF20038DE61 /* IconTutorialDesactive@2x.png in Resources */,
-				005CBDCB1AA77BF20038DE61 /* BotonEnviarActive@3x.png in Resources */,
 				005CBE251AA78BBE0038DE61 /* img_flea.png in Resources */,
 				005CBD4B1AA777460038DE61 /* LIPCitiesTableViewCell.xib in Resources */,
 				005CBDD21AA77BF20038DE61 /* CaviarDreams_Italic.ttf in Resources */,
 				005CBDC11AA77BF20038DE61 /* AddActive@2x.png in Resources */,
 				005CBDEF1AA77BF20038DE61 /* LogoTwitter@2x.png in Resources */,
-				005CBDCC1AA77BF20038DE61 /* BotonEnviarDesactive.png in Resources */,
 				005CBDF11AA77BF20038DE61 /* LogoTwitterActive@2x.png in Resources */,
+				0026D3A91AD438EB002DC25E /* BotonEnviarActive.png in Resources */,
 				005CBDE41AA77BF20038DE61 /* img_rastro.png in Resources */,
 				005CBDDB1AA77BF20038DE61 /* IconInfoActive@2x.png in Resources */,
 				00B54F8E1AA89E1C0027C51D /* ImgNotAvailable.png in Resources */,
@@ -753,6 +739,7 @@
 				005CBDC41AA77BF20038DE61 /* BackActive.png in Resources */,
 				005CBDF71AA77BF20038DE61 /* SkipActive@2x.png in Resources */,
 				005CBDD31AA77BF20038DE61 /* CaviarDreams.ttf in Resources */,
+				0026D3AA1AD438EB002DC25E /* BotonEnviarActive@2x.png in Resources */,
 				005CBDFE1AA77BF20038DE61 /* Tutorial_2.png in Resources */,
 				005CBD711AA779200038DE61 /* LIPTutorialViewController.xib in Resources */,
 				005CBD6A1AA779120038DE61 /* LIPFormViewController.xib in Resources */,
@@ -760,9 +747,7 @@
 				005CBE261AA78BBE0038DE61 /* img_vaqueria.png in Resources */,
 				005CBDC21AA77BF20038DE61 /* AddDesactive.png in Resources */,
 				005CBDD61AA77BF20038DE61 /* IconFavoriteActive.png in Resources */,
-				005CBDCD1AA77BF20038DE61 /* BotonEnviarDesactive@1,5x.png in Resources */,
 				005CBDE31AA77BF20038DE61 /* img_nomada.png in Resources */,
-				005CBDC81AA77BF20038DE61 /* BotonEnviarActive.png in Resources */,
 				005CBE041AA77BF20038DE61 /* twitter-white.png in Resources */,
 				005CBDEB1AA77BF20038DE61 /* LogoInstagram@2x.png in Resources */,
 				005CBDDC1AA77BF20038DE61 /* IconInfoDesactive.png in Resources */,
@@ -779,7 +764,6 @@
 				005CBDD11AA77BF20038DE61 /* CaviarDreams_BoldItalic.ttf in Resources */,
 				008186271AC9A31C00C3A9BF /* Tutorial_en_1.png in Resources */,
 				0081861E1AC9A07B00C3A9BF /* Tutorial_1@2x.png in Resources */,
-				005CBDC91AA77BF20038DE61 /* BotonEnviarActive@1,5x.png in Resources */,
 				005CBD5B1AA778E60038DE61 /* LIPMarketViewController.xib in Resources */,
 				005CBD5D1AA778E60038DE61 /* LIPWebViewController.xib in Resources */,
 				005CBD6C1AA779120038DE61 /* LIPInfoViewController.xib in Resources */,
@@ -804,9 +788,9 @@
 				0081862B1AC9A31C00C3A9BF /* Tutorial_en_3.png in Resources */,
 				005CBDF81AA77BF20038DE61 /* SkipDesactive.png in Resources */,
 				005CBDF21AA77BF20038DE61 /* MarcadorActive.png in Resources */,
-				005CBDCA1AA77BF20038DE61 /* BotonEnviarActive@2x.png in Resources */,
 				005CBDEC1AA77BF20038DE61 /* LogoInstagramActive.png in Resources */,
 				005CBDDF1AA77BF20038DE61 /* IconTutorialActive@2x.png in Resources */,
+				0026D3AB1AD438EB002DC25E /* BotonEnviarDesactive.png in Resources */,
 				005CBDD51AA77BF20038DE61 /* facebook-white@2x.png in Resources */,
 				005CBCF01AA770420038DE61 /* LaunchScreen.xib in Resources */,
 				005CBDDD1AA77BF20038DE61 /* IconInfoDesactive@2x.png in Resources */,
@@ -816,6 +800,7 @@
 				005CBDF91AA77BF20038DE61 /* SkipDesactive@2x.png in Resources */,
 				00B54F941AA8A6730027C51D /* Web.png in Resources */,
 				005CBDED1AA77BF20038DE61 /* LogoInstagramActive@2x.png in Resources */,
+				0026D3AC1AD438EB002DC25E /* BotonEnviarDesactive@2x.png in Resources */,
 				0081862C1AC9A31C00C3A9BF /* Tutorial_en_3@2x.png in Resources */,
 				005CBCED1AA770420038DE61 /* Images.xcassets in Resources */,
 				0081862D1AC9A31C00C3A9BF /* Tutorial_en_4.png in Resources */,
@@ -827,7 +812,6 @@
 				008186291AC9A31C00C3A9BF /* Tutorial_en_2.png in Resources */,
 				00B54F951AA8A6730027C51D /* Web@2x.png in Resources */,
 				0060556E1AA9F0AC00F069E3 /* img_lost.png in Resources */,
-				005CBDCE1AA77BF20038DE61 /* BotonEnviarDesactive@2x.png in Resources */,
 				005CBDC31AA77BF20038DE61 /* AddDesactive@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

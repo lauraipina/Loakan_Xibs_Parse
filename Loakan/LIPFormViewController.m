@@ -36,6 +36,26 @@
                                                                           green:250.0/255
                                                                            blue:250.0/255
                                                                           alpha:1]];
+
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if([language isEqualToString:@"es"]) {
+        self.nameMarketLbl.text = @"Nombre Mercado";
+        self.cityMarketLbl.text = @"Ciudad Mercado";
+        self.webLbl.text = @"Web/Red Social Mercado";
+    } else {
+        self.nameMarketLbl.text = @"Name Market";
+        self.cityMarketLbl.text = @"City Market";
+        self.webLbl.text = @"Web/Social Media Market";
+    }
+    self.nameMarketLbl.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
+    self.nameMarketLbl.textColor = [UIColor grayColor];
+    self.cityMarketLbl.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
+    self.cityMarketLbl.textColor = [UIColor grayColor];
+    self.webLbl.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
+    self.webLbl.textColor = [UIColor grayColor];
+
+    
     //*** BOTON BACK
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *backBtnImage = [UIImage imageNamed:@"BackDesactive"];

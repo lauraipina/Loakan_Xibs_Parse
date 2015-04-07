@@ -14,11 +14,15 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameMarketLbl;
 @property (weak, nonatomic) IBOutlet UITextField *nameMarketTextView;
 
+@property (weak, nonatomic) IBOutlet UILabel *cityMarketLbl;
 @property (weak, nonatomic) IBOutlet UITextField *cityMarketTextView;
 
+@property (weak, nonatomic) IBOutlet UILabel *webLbl;
 @property (weak, nonatomic) IBOutlet UITextField *webTextView;
+@property (weak, nonatomic) IBOutlet UIButton *btnEnviar;
 
 - (IBAction)sendEmail:(id)sender;
 
