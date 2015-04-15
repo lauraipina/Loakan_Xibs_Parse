@@ -51,25 +51,24 @@
     PFObject *miMercado = [PFObject objectWithClassName:@"Mercados"];
     PFObject *myMarket = [PFObject objectWithClassName:@"Markets"];
     
-    NSString *name = @"Cool Craft Market";
-    NSString *web = @"http://www.coolcraftmarket.com";
-    NSString *face = @"https://www.facebook.com/AlicanteCraft";
-    //NSString *tw = @"https://twitter.com/LaFireta";
+    NSString *name = @"Mercado de Motores";
+    //NSString *web = @"http://www.coolcraftmarket.com";
+    NSString *face = @"https://www.facebook.com/mercadodemotores";
+    NSString *tw = @"https://twitter.com/mercadodmotores";
     //NSString *insta = @"https://instagram.com/corner_label/";
-    NSString *dire = @"C/ San Carlos, 78. Alicante";
-    
+    NSString *dire = @"Museo del Ferrocarril, Paseo de las Delicias, 61, Madrid";
 
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:38.353447 longitude:-0.481605];
-    NSString *city = @"Alicante";
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:40.398725 longitude:-3.691637];
+    NSString *city = @"Madrid";
     
     
     
     [miMercado setObject:name forKey:@"name"];
-    [miMercado setObject:@"Concebido como un lugar de promoción para diseñadores, crafters y emprendedores, nace con la idea de servir de plataforma impulsora del arte y el diseño." forKey:@"info"];
+    [miMercado setObject:@"La estación más bonita de Madrid llena de trenes, muebles de segunda mano, ropa añeja de grandes firmas, diseño de ahora, comida, música y risas." forKey:@"info"];
     [miMercado setObject:@"Variable. Consulta web." forKey:@"timetable"];
-    [miMercado setObject:web forKey:@"web"];
+    //[miMercado setObject:web forKey:@"web"];
     [miMercado setObject:face forKey:@"facebook"];
-    //[miMercado setObject:tw forKey:@"twitter"];
+    [miMercado setObject:tw forKey:@"twitter"];
     //[miMercado setObject:insta forKey:@"instagram"];
     [miMercado setObject:dire forKey:@"address"];
     [miMercado setObject:city forKey:@"city"];
@@ -77,11 +76,11 @@
 
     
      [myMarket setObject:name forKey:@"name"];
-     [myMarket setObject:@"Conceived as a place of promotion for designers, crafters and entrepreneurs, born with the idea of serving as a driving platform of art and design." forKey:@"info"];
+     [myMarket setObject:@"The most beautiful station in Madrid, full of trains, second hand furniture, vintage clothes of large firms, design, food, music and laughter." forKey:@"info"];
      [myMarket setObject:@"Variable. Check web." forKey:@"timetable"];
-     [myMarket setObject:web forKey:@"web"];
+     //[myMarket setObject:web forKey:@"web"];
      [myMarket setObject:face forKey:@"facebook"];
-     //[myMarket setObject:tw forKey:@"twitter"];
+     [myMarket setObject:tw forKey:@"twitter"];
      //[myMarket setObject:insta forKey:@"instagram"];
      [myMarket setObject:dire forKey:@"address"];
      [myMarket setObject:city forKey:@"city"];

@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UITextView *parrafoTxt;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *nameMarketLbl;
 @property (weak, nonatomic) IBOutlet UITextField *nameMarketTextView;
 

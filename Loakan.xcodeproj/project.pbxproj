@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0026D3A91AD438EB002DC25E /* BotonEnviarActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A51AD438EB002DC25E /* BotonEnviarActive.png */; };
-		0026D3AA1AD438EB002DC25E /* BotonEnviarActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A61AD438EB002DC25E /* BotonEnviarActive@2x.png */; };
-		0026D3AB1AD438EB002DC25E /* BotonEnviarDesactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A71AD438EB002DC25E /* BotonEnviarDesactive.png */; };
-		0026D3AC1AD438EB002DC25E /* BotonEnviarDesactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0026D3A81AD438EB002DC25E /* BotonEnviarDesactive@2x.png */; };
 		0058637E1ABF0A9800DA63C4 /* LIPFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */; };
 		005CBCE81AA770420038DE61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCE71AA770420038DE61 /* main.m */; };
 		005CBCEB1AA770420038DE61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CBCEA1AA770420038DE61 /* AppDelegate.m */; };
@@ -116,6 +112,10 @@
 		0081862C1AC9A31C00C3A9BF /* Tutorial_en_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008186241AC9A31C00C3A9BF /* Tutorial_en_3@2x.png */; };
 		0081862D1AC9A31C00C3A9BF /* Tutorial_en_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 008186251AC9A31C00C3A9BF /* Tutorial_en_4.png */; };
 		0081862E1AC9A31C00C3A9BF /* Tutorial_en_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008186261AC9A31C00C3A9BF /* Tutorial_en_4@2x.png */; };
+		009C23C31ADEE75300F729CF /* BotonEnviarActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 009C23BF1ADEE75300F729CF /* BotonEnviarActive.png */; };
+		009C23C41ADEE75300F729CF /* BotonEnviarActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 009C23C01ADEE75300F729CF /* BotonEnviarActive@2x.png */; };
+		009C23C51ADEE75300F729CF /* BotonEnviarDesactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 009C23C11ADEE75300F729CF /* BotonEnviarDesactive.png */; };
+		009C23C61ADEE75300F729CF /* BotonEnviarDesactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 009C23C21ADEE75300F729CF /* BotonEnviarDesactive@2x.png */; };
 		00B54F7E1AA878B60027C51D /* Tutorial_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F7C1AA878B60027C51D /* Tutorial_3.png */; };
 		00B54F7F1AA878B60027C51D /* Tutorial_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */; };
 		00B54F8C1AA89E1C0027C51D /* ImgNoDisponible.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B54F881AA89E1C0027C51D /* ImgNoDisponible.png */; };
@@ -141,10 +141,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0026D3A51AD438EB002DC25E /* BotonEnviarActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarActive.png; sourceTree = "<group>"; };
-		0026D3A61AD438EB002DC25E /* BotonEnviarActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarActive@2x.png"; sourceTree = "<group>"; };
-		0026D3A71AD438EB002DC25E /* BotonEnviarDesactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarDesactive.png; sourceTree = "<group>"; };
-		0026D3A81AD438EB002DC25E /* BotonEnviarDesactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarDesactive@2x.png"; sourceTree = "<group>"; };
 		0058637C1ABF0A9800DA63C4 /* LIPFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPFavoritesViewController.h; sourceTree = "<group>"; };
 		0058637D1ABF0A9800DA63C4 /* LIPFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPFavoritesViewController.m; sourceTree = "<group>"; };
 		005CBCE21AA770420038DE61 /* Loakan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loakan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +265,10 @@
 		008186241AC9A31C00C3A9BF /* Tutorial_en_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_en_3@2x.png"; sourceTree = "<group>"; };
 		008186251AC9A31C00C3A9BF /* Tutorial_en_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_en_4.png; sourceTree = "<group>"; };
 		008186261AC9A31C00C3A9BF /* Tutorial_en_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_en_4@2x.png"; sourceTree = "<group>"; };
+		009C23BF1ADEE75300F729CF /* BotonEnviarActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarActive.png; sourceTree = "<group>"; };
+		009C23C01ADEE75300F729CF /* BotonEnviarActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarActive@2x.png"; sourceTree = "<group>"; };
+		009C23C11ADEE75300F729CF /* BotonEnviarDesactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BotonEnviarDesactive.png; sourceTree = "<group>"; };
+		009C23C21ADEE75300F729CF /* BotonEnviarDesactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BotonEnviarDesactive@2x.png"; sourceTree = "<group>"; };
 		00B54F7C1AA878B60027C51D /* Tutorial_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_3.png; sourceTree = "<group>"; };
 		00B54F7D1AA878B60027C51D /* Tutorial_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial_3@2x.png"; sourceTree = "<group>"; };
 		00B54F881AA89E1C0027C51D /* ImgNoDisponible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ImgNoDisponible.png; sourceTree = "<group>"; };
@@ -533,10 +533,10 @@
 		005CBE101AA77CFE0038DE61 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				0026D3A51AD438EB002DC25E /* BotonEnviarActive.png */,
-				0026D3A61AD438EB002DC25E /* BotonEnviarActive@2x.png */,
-				0026D3A71AD438EB002DC25E /* BotonEnviarDesactive.png */,
-				0026D3A81AD438EB002DC25E /* BotonEnviarDesactive@2x.png */,
+				009C23BF1ADEE75300F729CF /* BotonEnviarActive.png */,
+				009C23C01ADEE75300F729CF /* BotonEnviarActive@2x.png */,
+				009C23C11ADEE75300F729CF /* BotonEnviarDesactive.png */,
+				009C23C21ADEE75300F729CF /* BotonEnviarDesactive@2x.png */,
 				005CBD9C1AA77BF20038DE61 /* LogoFacebook.png */,
 				005CBD9D1AA77BF20038DE61 /* LogoFacebook@2x.png */,
 				005CBD9E1AA77BF20038DE61 /* LogoFacebookActive.png */,
@@ -725,7 +725,7 @@
 				005CBDC11AA77BF20038DE61 /* AddActive@2x.png in Resources */,
 				005CBDEF1AA77BF20038DE61 /* LogoTwitter@2x.png in Resources */,
 				005CBDF11AA77BF20038DE61 /* LogoTwitterActive@2x.png in Resources */,
-				0026D3A91AD438EB002DC25E /* BotonEnviarActive.png in Resources */,
+				009C23C31ADEE75300F729CF /* BotonEnviarActive.png in Resources */,
 				005CBDE41AA77BF20038DE61 /* img_rastro.png in Resources */,
 				005CBDDB1AA77BF20038DE61 /* IconInfoActive@2x.png in Resources */,
 				00B54F8E1AA89E1C0027C51D /* ImgNotAvailable.png in Resources */,
@@ -739,7 +739,7 @@
 				005CBDC41AA77BF20038DE61 /* BackActive.png in Resources */,
 				005CBDF71AA77BF20038DE61 /* SkipActive@2x.png in Resources */,
 				005CBDD31AA77BF20038DE61 /* CaviarDreams.ttf in Resources */,
-				0026D3AA1AD438EB002DC25E /* BotonEnviarActive@2x.png in Resources */,
+				009C23C41ADEE75300F729CF /* BotonEnviarActive@2x.png in Resources */,
 				005CBDFE1AA77BF20038DE61 /* Tutorial_2.png in Resources */,
 				005CBD711AA779200038DE61 /* LIPTutorialViewController.xib in Resources */,
 				005CBD6A1AA779120038DE61 /* LIPFormViewController.xib in Resources */,
@@ -790,7 +790,7 @@
 				005CBDF21AA77BF20038DE61 /* MarcadorActive.png in Resources */,
 				005CBDEC1AA77BF20038DE61 /* LogoInstagramActive.png in Resources */,
 				005CBDDF1AA77BF20038DE61 /* IconTutorialActive@2x.png in Resources */,
-				0026D3AB1AD438EB002DC25E /* BotonEnviarDesactive.png in Resources */,
+				009C23C51ADEE75300F729CF /* BotonEnviarDesactive.png in Resources */,
 				005CBDD51AA77BF20038DE61 /* facebook-white@2x.png in Resources */,
 				005CBCF01AA770420038DE61 /* LaunchScreen.xib in Resources */,
 				005CBDDD1AA77BF20038DE61 /* IconInfoDesactive@2x.png in Resources */,
@@ -800,7 +800,7 @@
 				005CBDF91AA77BF20038DE61 /* SkipDesactive@2x.png in Resources */,
 				00B54F941AA8A6730027C51D /* Web.png in Resources */,
 				005CBDED1AA77BF20038DE61 /* LogoInstagramActive@2x.png in Resources */,
-				0026D3AC1AD438EB002DC25E /* BotonEnviarDesactive@2x.png in Resources */,
+				009C23C61ADEE75300F729CF /* BotonEnviarDesactive@2x.png in Resources */,
 				0081862C1AC9A31C00C3A9BF /* Tutorial_en_3@2x.png in Resources */,
 				005CBCED1AA770420038DE61 /* Images.xcassets in Resources */,
 				0081862D1AC9A31C00C3A9BF /* Tutorial_en_4.png in Resources */,
@@ -999,6 +999,7 @@
 					"$(PROJECT_DIR)/Loakan",
 				);
 				INFOPLIST_FILE = Loakan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1015,6 +1016,7 @@
 					"$(PROJECT_DIR)/Loakan",
 				);
 				INFOPLIST_FILE = Loakan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

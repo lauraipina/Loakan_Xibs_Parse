@@ -359,8 +359,8 @@ CGFloat const   GHAnimationDelay = GHAnimationDuration/5;
             CGFloat distanceFromCenter = sqrt(pow(self.curretnLocation.x - self.longPressLocation.x, 2)+ pow(self.curretnLocation.y-self.longPressLocation.y, 2));
             
             CGFloat toleranceDistance = (self.radius - GHMainItemSize/(2*sqrt(2)) - GHMenuItemSize/(2*sqrt(2)) )/2;
-            
-            CGFloat distanceFromItem = fabsf(distanceFromCenter - self.radius) - GHMenuItemSize/(2*sqrt(2)) ;
+            //LAURA cambiamos fabsf por fabs
+            CGFloat distanceFromItem = fabs(distanceFromCenter - self.radius) - GHMenuItemSize/(2*sqrt(2)) ;
             
             if (fabs(distanceFromItem) < toleranceDistance ) {
                 CALayer *layer = [self.menuItems objectAtIndex:closeToIndex];

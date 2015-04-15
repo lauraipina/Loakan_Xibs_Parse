@@ -43,10 +43,12 @@
         self.nameMarketLbl.text = @"Nombre Mercado";
         self.cityMarketLbl.text = @"Ciudad Mercado";
         self.webLbl.text = @"Web/Red Social Mercado";
+        self.parrafoTxt.text = @"¿Conoces algún mercadillo que no se encuentre en LOAKAN? \n \nRellena el siguiente formulario y lo añadiremos cuanto antes.\n \n¡Gracias por colaborar!";
     } else {
         self.nameMarketLbl.text = @"Name Market";
         self.cityMarketLbl.text = @"City Market";
         self.webLbl.text = @"Web/Social Media Market";
+        self.parrafoTxt.text = @"Do you know a market that is not in Loakan? \n \nComplete the form below and we'll add it as soon as possible. \n \nThanks for collaborating!";
     }
     self.nameMarketLbl.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
     self.nameMarketLbl.textColor = [UIColor grayColor];
@@ -54,6 +56,8 @@
     self.cityMarketLbl.textColor = [UIColor grayColor];
     self.webLbl.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
     self.webLbl.textColor = [UIColor grayColor];
+    self.parrafoTxt.font = [UIFont fontWithName:@"CaviarDreams-Bold" size:16];
+    self.parrafoTxt.textColor = [UIColor grayColor];
 
     
     //*** BOTON BACK
